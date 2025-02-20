@@ -15,10 +15,10 @@ public class Enemy : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        speed = data.speed;
-        health = data.health;
+        destination = GameObject.Find("EnemyDestination").transform;
         enemyType = checkEnemyType();
-        
+        speed = data.speed;
+        health = data.health; 
     }
 
     // Update is called once per frame
@@ -35,11 +35,11 @@ public class Enemy : MonoBehaviour
         }
         else if (data.werewolf == true)
         {
-            return "were";
+            return "werewolf";
         }
         else
         {
-            return 3;
+            return "zombie";
         }
     }
 }
