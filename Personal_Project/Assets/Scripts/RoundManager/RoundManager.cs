@@ -10,6 +10,10 @@ public class RoundManager : MonoBehaviour
 
     [Header("Round stats")]
     public int EnemiesToSpawn;
+    public int currentRound;
+    public int weakRounds;
+    public int moderateRounds;
+    public int strongRounds;
 
     [Header("Enemies")]
     public GameObject[] enemies;
@@ -32,5 +36,12 @@ public class RoundManager : MonoBehaviour
     public void spawnSpecialEnemy()
     {
 
+    }
+    public void startRound()
+    {
+        if(currentRound <= weakRounds)
+        {
+
+        }
     }
 }
