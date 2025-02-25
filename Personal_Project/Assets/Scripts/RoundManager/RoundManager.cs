@@ -1,7 +1,10 @@
+using System.Collections;
 using UnityEngine;
 
 public class RoundManager : MonoBehaviour
 {
+    [Header("Script Refs")]
+    public HealthLoss healthLoss;
     [Header("Game Stats")]
     public int health;
     public int round;
@@ -9,24 +12,31 @@ public class RoundManager : MonoBehaviour
     public GameObject[] Spawners;
 
     [Header("Round stats")]
-    public int EnemiesToSpawn;
+    public int enemiesToSpawn;
     public int currentRound;
     public int weakRounds;
     public int moderateRounds;
     public int strongRounds;
+    public bool roundStarted;
 
     [Header("Enemies")]
     public GameObject[] enemies;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        SpawnEnemy(enemies[0]);
+        healthLoss = GameObject.Find("EnemyDestination").GetComponent<HealthLoss>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (healthLoss.enemiesDestroyed == enemiesToSpawn)
+        {
+            currentRound++;
+            updateEnemiesToSpawn();
+            roundStarted = false;
+        }
     }
     public void SpawnEnemy(GameObject enemy)
     {
@@ -37,11 +47,29 @@ public class RoundManager : MonoBehaviour
     {
 
     }
-    public void startRound()
+    IEnumerator spawnWeakRound(int numEnemies)
     {
-        if(currentRound <= weakRounds)
+        for(int i =0; i < numEnemies; i++)
         {
-
+            SpawnEnemy(enemies[0]);
+            yield return new WaitForSeconds(1);
         }
     }
+    public void startRound()
+    {
+        if(roundStarted == false)
+        {
+            if (currentRound <= weakRounds)
+            {
+                roundStarted = true;
+                StartCoroutine(spawnWeakRound(enemiesToSpawn));
+            }
+        }
+        
+    }
+    public void updateEnemiesToSpawn()
+    {
+        enemiesToSpawn += currentRound;
+    }
+    
 }

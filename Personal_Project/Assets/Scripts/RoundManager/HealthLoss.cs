@@ -3,6 +3,8 @@ using UnityEngine;
 public class HealthLoss : MonoBehaviour
 {
     private RoundManager roundManager;
+
+    public int enemiesDestroyed;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -19,7 +21,8 @@ public class HealthLoss : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            Destroy(other.gameObject);  
+            Destroy(other.gameObject);
+            enemiesDestroyed++;
         }
     }
 }
