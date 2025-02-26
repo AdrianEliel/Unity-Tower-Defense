@@ -4,7 +4,7 @@ public class EnemyInRange : MonoBehaviour
 {
     public Collider rangeCollider;
     public Transform unitTransform;
-    public bool enemyInRange;
+    public bool isInRange;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,7 +20,7 @@ public class EnemyInRange : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            enemyInRange = true;
+            isInRange = true;
             unitTransform.LookAt(other.transform.position);
         }
     }
@@ -28,7 +28,7 @@ public class EnemyInRange : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
-            enemyInRange = false;
+            isInRange = false;
         }
     }
 

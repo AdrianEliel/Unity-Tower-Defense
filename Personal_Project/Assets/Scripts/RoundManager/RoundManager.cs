@@ -1,10 +1,12 @@
 using System.Collections;
+using System.Transactions;
 using UnityEngine;
 
 public class RoundManager : MonoBehaviour
 {
     [Header("Script Refs")]
     public HealthLoss healthLoss;
+    public RoundUI roundUI;
     [Header("Game Stats")]
     public int health;
     public int round;
@@ -25,6 +27,7 @@ public class RoundManager : MonoBehaviour
     void Start()
     {
         healthLoss = GameObject.Find("EnemyDestination").GetComponent<HealthLoss>();
+        roundUI = GetComponentInParent<RoundUI>();
         
     }
 
@@ -33,7 +36,7 @@ public class RoundManager : MonoBehaviour
     {
         if (healthLoss.enemiesDestroyed == enemiesToSpawn)
         {
-            currentRound++;
+            healthLoss.enemiesDestroyed = 0;
             updateEnemiesToSpawn();
             roundStarted = false;
         }
@@ -42,10 +45,6 @@ public class RoundManager : MonoBehaviour
     {
         Vector3 spawnPos = Spawners[Random.Range(0,Spawners.Length)].transform.position;
         Instantiate(enemy, spawnPos, transform.rotation);
-    }
-    public void spawnSpecialEnemy()
-    {
-
     }
     IEnumerator spawnWeakRound(int numEnemies)
     {
@@ -61,6 +60,8 @@ public class RoundManager : MonoBehaviour
         {
             if (currentRound <= weakRounds)
             {
+                currentRound++;
+                roundUI.updateRoundCounter(currentRound);
                 roundStarted = true;
                 StartCoroutine(spawnWeakRound(enemiesToSpawn));
             }
