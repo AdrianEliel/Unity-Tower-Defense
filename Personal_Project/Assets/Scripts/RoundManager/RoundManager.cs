@@ -51,7 +51,7 @@ public class RoundManager : MonoBehaviour
         for(int i =0; i < numEnemies; i++)
         {
             SpawnEnemy(enemies[0]);
-            yield return new WaitForSeconds(1);
+            yield return new WaitForSeconds(1.4f);
         }
     }
     public void startRound()

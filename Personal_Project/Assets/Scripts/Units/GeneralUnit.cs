@@ -1,10 +1,13 @@
 using UnityEngine;
 
-public class EnemyInRange : MonoBehaviour
+public abstract class GeneralUnit : MonoBehaviour
 {
-    public Collider rangeCollider;
-    public Transform unitTransform;
+    [Header("Script Refs")]
+    public UnitData data;
+
+    [Header("Targeting variables")]
     public bool isInRange;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -16,12 +19,13 @@ public class EnemyInRange : MonoBehaviour
     {
         
     }
+
     private void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
             isInRange = true;
-            unitTransform.LookAt(other.transform.position);
+            transform.LookAt(other.transform.position);
         }
     }
     private void OnTriggerExit(Collider other)
@@ -32,5 +36,5 @@ public class EnemyInRange : MonoBehaviour
         }
     }
 
-
+    public abstract void Shoot();
 }
