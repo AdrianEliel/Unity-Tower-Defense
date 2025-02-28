@@ -15,7 +15,7 @@ public abstract class GeneralUnit : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
         
     }

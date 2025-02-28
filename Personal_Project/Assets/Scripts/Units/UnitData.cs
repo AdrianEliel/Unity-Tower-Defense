@@ -4,8 +4,10 @@ using UnityEngine;
 public class UnitData : ScriptableObject
 {
     [Header("Attacks")]
-    public GameObject attack;
+    public GameObject attackTrail;
+    public float attackSpeed;
 
     [Header("Targets")]
     public GameObject target;
+    public LayerMask targetLayer;
 }
