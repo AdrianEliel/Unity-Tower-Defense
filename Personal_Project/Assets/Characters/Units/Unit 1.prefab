@@ -229,7 +229,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8814929576926208547}
   - component: {fileID: 7604956448914368012}
-  - component: {fileID: 5646164666370755577}
+  - component: {fileID: 8637465985566139010}
   m_Layer: 0
   m_Name: Unit 1
   m_TagString: Untagged
@@ -274,7 +274,7 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 3
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &5646164666370755577
+--- !u!114 &8637465985566139010
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -283,9 +283,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 5835206122473997720}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f7d7c0a88be674646860bf54140743e6, type: 3}
+  m_Script: {fileID: 11500000, guid: 03e44b416e2154d43bca29ee0100940e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rangeCollider: {fileID: 7604956448914368012}
-  unitTransform: {fileID: 5824619178308571147}
-  enemyInRange: 0
+  isInRange: 0
+  weapon: {fileID: 0}

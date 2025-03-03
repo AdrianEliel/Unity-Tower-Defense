@@ -3,13 +3,13 @@ using UnityEngine;
 public abstract class GeneralUnit : MonoBehaviour
 {
     [Header("Script Refs")]
-    public UnitData data;
+    protected UnitData data;
 
     [Header("Targeting variables")]
     public bool isInRange;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public virtual void Start()
     {
         
     }

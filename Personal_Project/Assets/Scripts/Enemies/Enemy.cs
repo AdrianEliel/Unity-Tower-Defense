@@ -12,6 +12,7 @@ public class Enemy : MonoBehaviour
     private int health;
     private float speed;
     private string enemyType;
+    private int damageStrength;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -19,6 +20,7 @@ public class Enemy : MonoBehaviour
         enemyType = checkEnemyType();
         speed = data.speed;
         health = data.health; 
+        damageStrength = data.damageStrength;
     }
 
     // Update is called once per frame
@@ -41,5 +43,10 @@ public class Enemy : MonoBehaviour
         {
             return "zombie";
         }
+    }
+
+    public int getStrength()
+    {
+        return damageStrength;
     }
 }

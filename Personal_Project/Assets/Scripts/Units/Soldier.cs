@@ -5,9 +5,9 @@ public class Soldier : GeneralUnit
 {
     public Transform weapon;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public override void Start()
     {
-        
+        base.Start();
     }
 
     // Update is called once per frame
@@ -48,6 +48,7 @@ public class Soldier : GeneralUnit
         }
 
         yield return null;
+
         Destroy(attackTrail);
     }
 }

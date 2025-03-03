@@ -5,8 +5,8 @@ using UnityEngine;
 public class RoundManager : MonoBehaviour
 {
     [Header("Script Refs")]
-    public HealthLoss healthLoss;
-    public RoundUI roundUI;
+    private HealthLoss healthLoss;
+    private RoundUI roundUI;
     [Header("Game Stats")]
     public int health;
     public int round;
@@ -34,12 +34,7 @@ public class RoundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (healthLoss.enemiesDestroyed == enemiesToSpawn)
-        {
-            healthLoss.enemiesDestroyed = 0;
-            updateEnemiesToSpawn();
-            roundStarted = false;
-        }
+
     }
     public void SpawnEnemy(GameObject enemy)
     {
@@ -71,6 +66,11 @@ public class RoundManager : MonoBehaviour
     public void updateEnemiesToSpawn()
     {
         enemiesToSpawn += currentRound;
+    }
+
+    public void loseHealth(int num)
+    {
+        health -= num;
     }
     
 }
