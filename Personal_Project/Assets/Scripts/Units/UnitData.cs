@@ -4,6 +4,7 @@ using UnityEngine;
 public class UnitData : ScriptableObject
 {
     [Header("Attacks")]
+    public string weaponName;
     public GameObject attackTrail;
     public float attackSpeed;
 

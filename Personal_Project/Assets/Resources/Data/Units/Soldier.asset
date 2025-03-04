@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7540f0079d0566740893e87a25d8fb8d, type: 3}
   m_Name: Soldier
   m_EditorClassIdentifier: 
+  weaponName: Pistol
   attackTrail: {fileID: 2693277110091851887, guid: 3ba283b54226abb4ca95be070107015d, type: 3}
   attackSpeed: 10
   target: {fileID: 5395728486566546752, guid: 0e7aecdfddc20f14fb67aa2c1f7c02bb, type: 3}
