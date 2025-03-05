@@ -3,17 +3,20 @@ using UnityEngine;
 public abstract class GeneralUnit : MonoBehaviour
 {
     [Header("Script Refs")]
-    protected UnitData data;
+    public UnitData data;
 
     [Header("Targeting variables")]
     public bool isInRange;
 
-    [Header("Children")]
-    Transform childFound;
+    [Header("Attacking")]
+    public float nextTimeToFire;
+
+    [Header("Enemy")]
+    public GameObject enemyLookedAt;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public virtual void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -28,6 +31,7 @@ public abstract class GeneralUnit : MonoBehaviour
         {
             isInRange = true;
             transform.LookAt(other.transform.position);
+            enemyLookedAt = other.gameObject;
         }
     }
     private void OnTriggerExit(Collider other)
@@ -35,32 +39,23 @@ public abstract class GeneralUnit : MonoBehaviour
         if (other.gameObject.CompareTag("Enemy"))
         {
             isInRange = false;
+            enemyLookedAt = null;
         }
     }
 
-    protected Transform CustomFindChild(string key, Transform parent)
+    public void TryShoot()
     {
-        foreach (Transform child in parent)
+        if (Time.time >= nextTimeToFire)
         {
-            if (child.name == key)
-            {
-                childFound = child;
-            }
-
-            else
-            {
-                if (child.childCount > 0)
-                {
-                    if (childFound == null)
-                    {
-                        CustomFindChild(key, child);
-                    }
-                }
-            }
+            nextTimeToFire = Time.time + (1 / data.attackRate);
+            HandleShoot();
         }
 
-        return childFound;
     }
-
+    
+    public void HandleShoot()
+    {
+        Shoot();
+    }
     public abstract void Shoot();
 }

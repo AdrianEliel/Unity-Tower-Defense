@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class InRangeOfPlayer : MonoBehaviour
+public class GetGunData : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -12,5 +12,10 @@ public class InRangeOfPlayer : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public Transform GetGunTransform()
+    {
+        return transform;
     }
 }

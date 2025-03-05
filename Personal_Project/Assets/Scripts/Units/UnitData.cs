@@ -6,6 +6,7 @@ public class UnitData : ScriptableObject
     [Header("Attacks")]
     public string weaponName;
     public GameObject attackTrail;
+    public float attackRate;
     public float attackSpeed;
 
     [Header("Targets")]

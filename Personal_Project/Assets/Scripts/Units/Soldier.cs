@@ -1,15 +1,18 @@
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Soldier : GeneralUnit
 {
-    private Transform gun;
+    public Transform gun;
+    public Transform targetWorld;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public override void Start()
     {
         base.Start();
-        gun = CustomFindChild(data.weaponName, transform);
-    }
+        gun = gameObject.GetComponentInChildren<GetGunData>().GetGunTransform();
+       
+    }   
 
     // Update is called once per frame
     public override void Update()
@@ -17,21 +20,15 @@ public class Soldier : GeneralUnit
         base.Update();
         if (isInRange)
         {
-            StartCoroutine(CanShoot());
+            TryShoot();
         }
-    }
-
-    IEnumerator CanShoot()
-    {
-        Shoot();
-        yield return new WaitForSeconds(.5f);
     }
 
     public override void Shoot()
     {
         RaycastHit hit;
         Vector3 target = Vector3.zero;
-        if (Physics.Raycast(gun.position, transform.forward, out hit, 1000, data.targetLayer))
+        if (Physics.Raycast(gun.position, enemyLookedAt.transform.position, out hit, 1000, data.targetLayer))
         {
             Debug.Log(hit.collider.name + " was hit");
             target = hit.point;
