@@ -28,6 +28,7 @@ public class Enemy : MonoBehaviour
     {
         agent.speed = speed;
         agent.SetDestination(destination.position);
+        LiveOrDie();
     }
     public string checkEnemyType()
     {
@@ -48,5 +49,18 @@ public class Enemy : MonoBehaviour
     public int getStrength()
     {
         return damageStrength;
+    }
+
+    public void takeDamage()
+    {
+        health--;
+    }
+
+    private void LiveOrDie()
+    {
+        if (health <= 0)
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -26,28 +26,25 @@ public class Soldier : GeneralUnit
 
     public override void Shoot()
     {
-        RaycastHit hit;
-        Vector3 target = Vector3.zero;
-        if (Physics.Raycast(gun.position, enemyLookedAt.transform.position, out hit, 1000, data.targetLayer))
-        {
-            Debug.Log(hit.collider.name + " was hit");
-            target = hit.point;
-            StartCoroutine(AttackFire(target));
-        }
+        StartCoroutine(AttackFire(enemyLookedAt.transform.position));
     }
     
     IEnumerator AttackFire(Vector3 target)
     {
-        GameObject attackTrail = Instantiate(data.attackTrail, gun.transform);
+        GameObject attackTrail = Instantiate(data.attackTrail, gun.transform.position, Quaternion.identity);
+        BulletController bulletController = attackTrail.GetComponent<BulletController>();
+        Enemy enemy = enemyLookedAt.GetComponent<Enemy>();
 
-        while (attackTrail!=null&& Vector3.Distance(gun.transform.position, target) >.1f)
+        while (attackTrail!=null && Vector3.Distance(attackTrail.transform.position, target)>.001f)
         {
             attackTrail.transform.position = Vector3.MoveTowards(attackTrail.transform.position, target, Time.deltaTime * data.attackSpeed);
+            yield return null;
         }
 
-        yield return null;
-
         Destroy(attackTrail);
+        Debug.Log(enemyLookedAt + " was hit");
+        enemy.takeDamage();
+        
     }
 
 
