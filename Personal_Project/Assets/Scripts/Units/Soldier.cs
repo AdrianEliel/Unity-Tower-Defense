@@ -31,9 +31,18 @@ public class Soldier : GeneralUnit
     
     IEnumerator AttackFire(Vector3 target)
     {
+        Enemy enemy = null;
         GameObject attackTrail = Instantiate(data.attackTrail, gun.transform.position, Quaternion.identity);
-        BulletController bulletController = attackTrail.GetComponent<BulletController>();
-        Enemy enemy = enemyLookedAt.GetComponent<Enemy>();
+        if(attackTrail != null)
+        {
+            BulletController bulletController = attackTrail.GetComponent<BulletController>();
+        }
+
+        if (enemyLookedAt != null)
+        {
+           enemy = enemyLookedAt.GetComponent<Enemy>();
+        }
+        
 
         while (attackTrail!=null && Vector3.Distance(attackTrail.transform.position, target)>.001f)
         {
@@ -42,6 +51,8 @@ public class Soldier : GeneralUnit
         }
 
         Destroy(attackTrail);
+
+        
         Debug.Log(enemyLookedAt + " was hit");
         enemy.takeDamage();
         

@@ -7,6 +7,7 @@ public class RoundManager : MonoBehaviour
     [Header("Script Refs")]
     private HealthLoss healthLoss;
     private RoundUI roundUI;
+
     [Header("Game Stats")]
     public int health;
     public int round;
@@ -23,6 +24,7 @@ public class RoundManager : MonoBehaviour
 
     [Header("Enemies")]
     public GameObject[] enemies;
+    public int enemiesKilled;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {

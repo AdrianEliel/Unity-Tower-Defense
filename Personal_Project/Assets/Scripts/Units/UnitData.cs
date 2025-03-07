@@ -12,4 +12,7 @@ public class UnitData : ScriptableObject
     [Header("Targets")]
     public GameObject target;
     public LayerMask targetLayer;
+
+    [Header("Unit Stats")]
+    public int enemiesEliminated;
 }

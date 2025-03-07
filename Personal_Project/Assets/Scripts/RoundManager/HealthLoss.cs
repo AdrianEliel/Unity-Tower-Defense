@@ -6,8 +6,9 @@ public class HealthLoss : MonoBehaviour
 
     public int enemiesDestroyed;
 
-    
-    
+    [Header("Unit Data")]
+    public UnitData unitData;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -27,7 +28,7 @@ public class HealthLoss : MonoBehaviour
             Destroy(other.gameObject);
             enemiesDestroyed++;
             roundManager.loseHealth(enemy.getStrength());
-            if (enemiesDestroyed == roundManager.enemiesToSpawn)
+            if (enemiesDestroyed + roundManager.enemiesKilled  == roundManager.enemiesToSpawn)
             {
                 roundManager.updateEnemiesToSpawn();
                 enemiesDestroyed = 0;

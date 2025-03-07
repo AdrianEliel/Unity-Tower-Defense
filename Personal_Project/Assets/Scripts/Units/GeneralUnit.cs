@@ -45,11 +45,15 @@ public abstract class GeneralUnit : MonoBehaviour
 
     public void TryShoot()
     {
-        if (Time.time >= nextTimeToFire)
+        if (enemyLookedAt!=null)
         {
-            nextTimeToFire = Time.time + (1 / data.attackRate);
-            HandleShoot();
+            if (Time.time >= nextTimeToFire)
+            {
+                nextTimeToFire = Time.time + (1 / data.attackRate);
+                HandleShoot();
+            }
         }
+        
 
     }
     

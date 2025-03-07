@@ -3,9 +3,14 @@ using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
+    [Header("Script Refs")]
+    private HealthLoss healthLoss;
+    private RoundManager roundManager;
+
     [Header ("Navmesh Data")]
     public NavMeshAgent agent;
     public Transform destination;
+
 
     [Header("Enemy Data")]
     public EnemyData data;
@@ -16,6 +21,8 @@ public class Enemy : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        roundManager = GameObject.Find("Round Manager").GetComponent<RoundManager>();
+        healthLoss = GameObject.Find("EnemyDestination").GetComponent<HealthLoss>();
         destination = GameObject.Find("EnemyDestination").transform;
         enemyType = checkEnemyType();
         speed = data.speed;
@@ -60,6 +67,14 @@ public class Enemy : MonoBehaviour
     {
         if (health <= 0)
         {
+            roundManager.enemiesKilled++;
+            if (healthLoss.enemiesDestroyed + roundManager.enemiesKilled == roundManager.enemiesToSpawn)
+            {
+                roundManager.updateEnemiesToSpawn();
+                roundManager.enemiesKilled = 0;
+                healthLoss.enemiesDestroyed = 0;
+                roundManager.roundStarted = false;
+            }
             Destroy(gameObject);
         }
     }
