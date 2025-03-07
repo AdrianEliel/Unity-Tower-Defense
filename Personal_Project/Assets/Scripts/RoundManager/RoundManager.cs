@@ -30,7 +30,8 @@ public class RoundManager : MonoBehaviour
     {
         healthLoss = GameObject.Find("EnemyDestination").GetComponent<HealthLoss>();
         roundUI = GetComponentInParent<RoundUI>();
-        
+        roundUI.updateHealthCounter(health);
+        roundUI.updateRoundCounter(round);
     }
 
     // Update is called once per frame
@@ -48,7 +49,7 @@ public class RoundManager : MonoBehaviour
         for(int i =0; i < numEnemies; i++)
         {
             SpawnEnemy(enemies[0]);
-            yield return new WaitForSeconds(1.4f);
+            yield return new WaitForSeconds(.5f);
         }
     }
     public void startRound()
@@ -73,6 +74,7 @@ public class RoundManager : MonoBehaviour
     public void loseHealth(int num)
     {
         health -= num;
+        roundUI.updateHealthCounter(health);
     }
     
 }

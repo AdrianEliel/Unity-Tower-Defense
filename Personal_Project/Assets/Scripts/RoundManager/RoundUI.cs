@@ -5,6 +5,7 @@ public class RoundUI : MonoBehaviour
 {
     [Header ("Text Elements")]
     public TextMeshProUGUI roundCounter;
+    public TextMeshProUGUI healthCounter;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -20,6 +21,11 @@ public class RoundUI : MonoBehaviour
     public void updateRoundCounter(int round)
     {
         roundCounter.text = "Round " + round;
+    }
+
+    public void updateHealthCounter(int health)
+    {
+        healthCounter.text = "Health " + health;
     }
     
 }
