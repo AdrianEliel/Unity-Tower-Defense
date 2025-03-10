@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   speed: 7
-  damageStrength: 0
+  damageStrength: 1
   vampire: 0
   zombie: 1
   werewolf: 0
