@@ -18,9 +18,12 @@ public class Soldier : GeneralUnit
     public override void Update()
     {
         base.Update();
-        if (isInRange)
+        if (placed)
         {
-            TryShoot();
+            if (isInRange)
+            {
+                TryShoot();
+            }
         }
     }
 

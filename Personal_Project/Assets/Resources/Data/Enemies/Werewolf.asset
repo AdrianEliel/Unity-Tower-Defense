@@ -15,6 +15,7 @@ MonoBehaviour:
   health: 3
   speed: 8
   damageStrength: 5
+  goldAmount: 10
   vampire: 0
   zombie: 0
   werewolf: 1

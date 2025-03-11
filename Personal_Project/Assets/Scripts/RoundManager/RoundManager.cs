@@ -12,6 +12,7 @@ public class RoundManager : MonoBehaviour
     public int health;
     public int round;
     public int difficulty;
+    public int gold;
     public GameObject[] Spawners;
 
     [Header("Round stats")]
@@ -32,6 +33,7 @@ public class RoundManager : MonoBehaviour
         roundUI = GetComponentInParent<RoundUI>();
         roundUI.updateHealthCounter(health);
         roundUI.updateRoundCounter(round);
+        roundUI.updateMoneyCounter(gold);
     }
 
     // Update is called once per frame
@@ -76,5 +78,10 @@ public class RoundManager : MonoBehaviour
         health -= num;
         roundUI.updateHealthCounter(health);
     }
-    
+
+    public void updateGoldAmount()
+    {
+        roundUI.updateMoneyCounter(gold);
+    }
+
 }

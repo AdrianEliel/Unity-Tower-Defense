@@ -7,6 +7,7 @@ public class EnemyData : ScriptableObject
     public int health;
     public float speed;
     public int damageStrength;
+    public int goldAmount;
 
     [Header("Enemy Type")]
     public bool vampire;

@@ -18,6 +18,7 @@ public class Enemy : MonoBehaviour
     private float speed;
     private string enemyType;
     private int damageStrength;
+    private int goldAmount;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -28,6 +29,7 @@ public class Enemy : MonoBehaviour
         speed = data.speed;
         health = data.health; 
         damageStrength = data.damageStrength;
+        goldAmount = data.goldAmount;
     }
 
     // Update is called once per frame
@@ -68,6 +70,8 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             roundManager.enemiesKilled++;
+            roundManager.gold += goldAmount;
+            roundManager.updateGoldAmount();
             if (healthLoss.enemiesDestroyed + roundManager.enemiesKilled == roundManager.enemiesToSpawn)
             {
                 roundManager.updateEnemiesToSpawn();

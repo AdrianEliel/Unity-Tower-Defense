@@ -13,6 +13,9 @@ public abstract class GeneralUnit : MonoBehaviour
 
     [Header("Enemy")]
     public GameObject enemyLookedAt;
+
+    [Header("Buying")]
+    public bool placed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public virtual void Start()
     {
