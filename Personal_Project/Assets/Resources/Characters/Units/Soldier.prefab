@@ -231,7 +231,7 @@ GameObject:
   - component: {fileID: 7604956448914368012}
   - component: {fileID: 8637465985566139010}
   m_Layer: 0
-  m_Name: Unit 1
+  m_Name: Soldier
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

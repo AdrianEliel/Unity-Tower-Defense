@@ -25,7 +25,14 @@ public abstract class GeneralUnit : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
-        
+        if (placed == false)
+        {
+            transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1));
+            if (Input.GetMouseButtonDown(0))
+            {
+                placed = true;
+            }
+        }
     }
 
     private void OnTriggerStay(Collider other)
