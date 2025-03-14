@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public abstract class GeneralUnit : MonoBehaviour
@@ -14,7 +15,8 @@ public abstract class GeneralUnit : MonoBehaviour
     [Header("Enemy")]
     public GameObject enemyLookedAt;
 
-    [Header("Buying")]
+    [Header("Buying & placing")]
+    public float prespectiveOffset = 10.5f;
     public bool placed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public virtual void Start()
@@ -30,6 +32,7 @@ public abstract class GeneralUnit : MonoBehaviour
             transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1));
             if (Input.GetMouseButtonDown(0))
             {
+                transform.position = new Vector3(transform.position.x, 1, transform.position.z);
                 placed = true;
             }
         }

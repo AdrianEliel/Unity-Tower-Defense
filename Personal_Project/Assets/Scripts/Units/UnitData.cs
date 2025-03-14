@@ -16,5 +16,6 @@ public class UnitData : ScriptableObject
     [Header("Unit Stats")]
     public int price;
     public int enemiesEliminated;
+    public LayerMask placeLayer;
 
 }

@@ -10,7 +10,7 @@ public class RecruitingTableButton : MonoBehaviour
     void Start()
     {
         spawnPos = Input.mousePosition;
-        roundManager = GameObject.Find("RoundManager").GetComponent<RoundManager>();
+        roundManager = GameObject.Find("Round Manager").GetComponent<RoundManager>();
     }
 
     // Update is called once per frame
