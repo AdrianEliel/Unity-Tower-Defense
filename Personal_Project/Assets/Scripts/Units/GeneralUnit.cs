@@ -16,7 +16,7 @@ public abstract class GeneralUnit : MonoBehaviour
     public GameObject enemyLookedAt;
 
     [Header("Buying & placing")]
-    public float prespectiveOffset = 10.5f;
+    public float yOffset = 1;
     public bool placed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public virtual void Start()
@@ -27,15 +27,7 @@ public abstract class GeneralUnit : MonoBehaviour
     // Update is called once per frame
     public virtual void Update()
     {
-        if (placed == false)
-        {
-            transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1));
-            if (Input.GetMouseButtonDown(0))
-            {
-                transform.position = new Vector3(transform.position.x, 1, transform.position.z);
-                placed = true;
-            }
-        }
+        placeUnit();
     }
 
     private void OnTriggerStay(Collider other)
@@ -68,6 +60,21 @@ public abstract class GeneralUnit : MonoBehaviour
         }
         
 
+    }
+
+    public void placeUnit()
+    {
+        if (placed == false)
+        {
+            transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.y));
+            transform.position = new Vector3(transform.position.x, 1, transform.position.z);
+
+            if (Input.GetMouseButtonDown(0) && Physics.Raycast(transform.position, Vector3.down, 1, data.placeLayer))
+            {
+                placed = true;
+                
+            }
+        }
     }
     
     public void HandleShoot()
