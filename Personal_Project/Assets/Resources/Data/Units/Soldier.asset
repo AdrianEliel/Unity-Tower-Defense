@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponName: Pistol
   attackTrail: {fileID: 2693277110091851887, guid: 3ba283b54226abb4ca95be070107015d, type: 3}
-  attackRate: 2
+  attackRate: 1
   attackSpeed: 50
   target: {fileID: 5395728486566546752, guid: 0e7aecdfddc20f14fb67aa2c1f7c02bb, type: 3}
   targetLayer:

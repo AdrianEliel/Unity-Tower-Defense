@@ -5,6 +5,7 @@ public abstract class GeneralUnit : MonoBehaviour
 {
     [Header("Script Refs")]
     public UnitData data;
+    public RoundManager roundManager;
 
     [Header("Targeting variables")]
     public bool isInRange;
@@ -21,7 +22,7 @@ public abstract class GeneralUnit : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public virtual void Start()
     {
-
+        roundManager = GameObject.Find("Round Manager").GetComponent<RoundManager>();
     }
 
     // Update is called once per frame
@@ -69,11 +70,27 @@ public abstract class GeneralUnit : MonoBehaviour
             transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.y));
             transform.position = new Vector3(transform.position.x, 1, transform.position.z);
 
-            if (Input.GetMouseButtonDown(0) && Physics.Raycast(transform.position, Vector3.down, 1, data.placeLayer))
+            if (Input.GetMouseButtonDown(0)&&roundManager.gold>=data.price)
             {
-                placed = true;
+                if(Physics.Raycast(transform.position, Vector3.down, Mathf.Infinity, data.placeLayer))
+                {
+                    placed = true;
+                    roundManager.updateGoldAmount(-data.price);
+                    
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
                 
             }
+            else if (Input.GetMouseButton(1))
+            {
+                Destroy(gameObject );
+            }
+
+            roundManager.isUnitBeingPlaced = false;
+            roundManager.UnitBeingPlaced = null;
         }
     }
     

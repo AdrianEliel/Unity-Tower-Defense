@@ -4,6 +4,7 @@ using UnityEngine.InputSystem;
 public class RecruitingTableButton : MonoBehaviour
 {
     public GameObject Unit;
+    private GameObject currentUnit;
     public Vector3 spawnPos;
     private RoundManager roundManager;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -21,6 +22,11 @@ public class RecruitingTableButton : MonoBehaviour
 
     public void createUnit()
     {
-        Instantiate(Unit,spawnPos, Unit.transform.rotation);
+        if(roundManager.UnitBeingPlaced == null && roundManager.isUnitBeingPlaced == false)
+        {
+            currentUnit = Instantiate(Unit, spawnPos, Unit.transform.rotation);
+            roundManager.isUnitBeingPlaced = true;
+        }
+        
     }
 }

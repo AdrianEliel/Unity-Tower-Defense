@@ -70,8 +70,7 @@ public class Enemy : MonoBehaviour
         if (health <= 0)
         {
             roundManager.enemiesKilled++;
-            roundManager.gold += goldAmount;
-            roundManager.updateGoldAmount();
+            roundManager.updateGoldAmount(goldAmount);
             if (healthLoss.enemiesDestroyed + roundManager.enemiesKilled == roundManager.enemiesToSpawn)
             {
                 roundManager.updateEnemiesToSpawn();

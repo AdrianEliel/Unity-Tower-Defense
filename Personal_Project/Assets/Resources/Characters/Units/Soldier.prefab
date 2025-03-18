@@ -288,9 +288,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   data: {fileID: 11400000, guid: 6a3e3c0033634324eb53c0c6f32a6b39, type: 2}
+  roundManager: {fileID: 0}
   isInRange: 0
   nextTimeToFire: 0
   enemyLookedAt: {fileID: 0}
+  yOffset: 1
+  placed: 0
   gun: {fileID: 0}
   targetWorld: {fileID: 0}
 --- !u!1 &8152771875363116550

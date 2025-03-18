@@ -26,6 +26,10 @@ public class RoundManager : MonoBehaviour
     [Header("Enemies")]
     public GameObject[] enemies;
     public int enemiesKilled;
+
+    [Header("Unit placement")]
+    public bool isUnitBeingPlaced;
+    public GameObject UnitBeingPlaced;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -79,8 +83,9 @@ public class RoundManager : MonoBehaviour
         roundUI.updateHealthCounter(health);
     }
 
-    public void updateGoldAmount()
+    public void updateGoldAmount(int goldAddSub)
     {
+        gold += goldAddSub;
         roundUI.updateMoneyCounter(gold);
     }
 
