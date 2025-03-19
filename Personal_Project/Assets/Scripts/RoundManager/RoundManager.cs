@@ -26,6 +26,7 @@ public class RoundManager : MonoBehaviour
     [Header("Enemies")]
     public GameObject[] enemies;
     public int enemiesKilled;
+    public GameObject[] enemyWaypoints;
 
     [Header("Unit placement")]
     public bool isUnitBeingPlaced;
@@ -55,7 +56,17 @@ public class RoundManager : MonoBehaviour
         for(int i =0; i < numEnemies; i++)
         {
             SpawnEnemy(enemies[0]);
-            yield return new WaitForSeconds(.5f);
+            yield return new WaitForSeconds(.3f);
+        }
+    }
+
+    IEnumerator spawnMediumRounds(int numEnemies)
+    {
+        for (int i = 0; i < numEnemies; i++)
+        {
+            int currentEnemy = Random.Range(0, enemies.Length - 1);
+            SpawnEnemy(enemies[currentEnemy]);
+            yield return new WaitForSeconds(.3f);
         }
     }
     public void startRound()
@@ -68,6 +79,14 @@ public class RoundManager : MonoBehaviour
                 roundUI.updateRoundCounter(currentRound);
                 roundStarted = true;
                 StartCoroutine(spawnWeakRound(enemiesToSpawn));
+            }
+
+            else if (currentRound <= moderateRounds)
+            {
+                currentRound++;
+                roundUI.updateRoundCounter(currentRound);
+                roundStarted=true;
+                StartCoroutine(spawnMediumRounds(enemiesToSpawn));
             }
         }
         

@@ -36,7 +36,7 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         agent.speed = speed;
-        agent.SetDestination(destination.position);
+        moveToWayPoints();
         LiveOrDie();
     }
     public string checkEnemyType()
@@ -80,5 +80,10 @@ public class Enemy : MonoBehaviour
             }
             Destroy(gameObject);
         }
+    }
+
+    private void moveToWayPoints()
+    {
+        agent.SetDestination(destination.position);
     }
 }
