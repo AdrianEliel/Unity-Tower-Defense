@@ -84,6 +84,6 @@ public class Enemy : MonoBehaviour
 
     private void moveToWayPoints()
     {
-        agent.SetDestination(destination.position);
+        agent.SetDestination(roundManager.enemyWaypoints[0].position);
     }
 }

@@ -26,7 +26,7 @@ public class RoundManager : MonoBehaviour
     [Header("Enemies")]
     public GameObject[] enemies;
     public int enemiesKilled;
-    public GameObject[] enemyWaypoints;
+    public Transform[] enemyWaypoints;
 
     [Header("Unit placement")]
     public bool isUnitBeingPlaced;
