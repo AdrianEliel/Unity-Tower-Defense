@@ -302,7 +302,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &40212245
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -788,7 +788,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &373606169
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1978,7 +1978,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &609367910
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2242,7 +2242,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &693345311
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4005,7 +4005,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &899167810
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4393,7 +4393,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1139241899
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4849,7 +4849,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1364316350
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5061,16 +5061,16 @@ MonoBehaviour:
   - {fileID: 5395728486566546752, guid: 3216009c24537cb46938c71bf1a19639, type: 3}
   enemiesKilled: 0
   enemyWaypoints:
-  - {fileID: 1364316349}
-  - {fileID: 693345310}
-  - {fileID: 40212244}
-  - {fileID: 1983614380}
-  - {fileID: 1139241898}
-  - {fileID: 1932203728}
-  - {fileID: 899167809}
-  - {fileID: 609367909}
-  - {fileID: 373606168}
-  - {fileID: 287935604}
+  - {fileID: 1364316353}
+  - {fileID: 693345314}
+  - {fileID: 40212248}
+  - {fileID: 1983614384}
+  - {fileID: 1139241902}
+  - {fileID: 1932203732}
+  - {fileID: 899167813}
+  - {fileID: 609367913}
+  - {fileID: 373606172}
+  - {fileID: 287935605}
   isUnitBeingPlaced: 0
   UnitBeingPlaced: {fileID: 0}
 --- !u!4 &1667307538
@@ -5464,7 +5464,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1932203729
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5572,7 +5572,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1983614381
 BoxCollider:
   m_ObjectHideFlags: 0

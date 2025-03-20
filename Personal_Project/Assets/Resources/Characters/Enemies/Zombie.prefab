@@ -149,6 +149,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agent: {fileID: 4638815106885433437}
   destination: {fileID: 0}
+  currentWaypoint: 0
   data: {fileID: 11400000, guid: f1981edfbde9c6a49a425cd5ee080c92, type: 2}
 --- !u!54 &2659196096661369088
 Rigidbody:
@@ -169,7 +170,7 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 128
+    m_Bits: 0
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
