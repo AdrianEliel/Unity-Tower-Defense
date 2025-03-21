@@ -103,9 +103,9 @@ CapsuleCollider:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -122,7 +122,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 5395728486566546752}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.5
+  m_Radius: 0.1
   m_Speed: 5
   m_Acceleration: 8
   avoidancePriority: 50
@@ -131,7 +131,7 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
+  m_Height: 0.1
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 3
@@ -150,6 +150,7 @@ MonoBehaviour:
   agent: {fileID: 4638815106885433437}
   destination: {fileID: 0}
   currentWaypoint: 0
+  rb: {fileID: 0}
   data: {fileID: 11400000, guid: f1981edfbde9c6a49a425cd5ee080c92, type: 2}
 --- !u!54 &2659196096661369088
 Rigidbody:
@@ -170,7 +171,7 @@ Rigidbody:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1

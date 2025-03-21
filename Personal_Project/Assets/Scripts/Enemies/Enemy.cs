@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
 
 
     [Header("Enemy Data")]
+    public Rigidbody rb;
     public EnemyData data;
     private int health;
     private float speed;
@@ -26,6 +27,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         Physics.IgnoreLayerCollision(7, 7);
+        rb = GetComponent<Rigidbody>(); 
         roundManager = GameObject.Find("Round Manager").GetComponent<RoundManager>();
         healthLoss = GameObject.Find("EnemyDestination").GetComponent<HealthLoss>();
         destination = GameObject.Find("EnemyDestination").transform;
@@ -40,7 +42,6 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        agent.speed = speed;
         StartCoroutine(moveToWayPoints());
         LiveOrDie();
     }
@@ -89,15 +90,17 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator moveToWayPoints()
     {
-        while(atTheEnd==false)
+        while (atTheEnd == false)
         {
             yield return null;
             if (roundManager.enemyWaypoints.Length > 1 && roundManager.enemyWaypoints[currentWaypoint] != null)
             {
+                agent.speed = speed;
                 agent.SetDestination(roundManager.enemyWaypoints[currentWaypoint].position);
                 if (Vector3.Distance(transform.position, roundManager.enemyWaypoints[currentWaypoint].position) < 1f)
                 {
-                    if (currentWaypoint < roundManager.enemyWaypoints.Length - 1)
+                    agent.speed = 0;
+                    if (currentWaypoint < roundManager.enemyWaypoints.Length)
                     {
                         currentWaypoint++;
                     }
@@ -108,9 +111,9 @@ public class Enemy : MonoBehaviour
                 }
             }
         }
+        Debug.Log("Last one");
         agent.SetDestination(destination.position);
-        
-        
-        
+
+
     }
 }
