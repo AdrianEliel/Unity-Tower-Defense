@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 public class Enemy : MonoBehaviour
 {
@@ -42,8 +43,11 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine(moveToWayPoints());
         LiveOrDie();
+    }
+    private void FixedUpdate()
+    {
+        StartCoroutine(moveToWayPoints());
     }
     public string checkEnemyType()
     {
@@ -95,12 +99,11 @@ public class Enemy : MonoBehaviour
             yield return null;
             if (roundManager.enemyWaypoints.Length > 1 && roundManager.enemyWaypoints[currentWaypoint] != null)
             {
-                agent.speed = speed;
                 agent.SetDestination(roundManager.enemyWaypoints[currentWaypoint].position);
-                if (Vector3.Distance(transform.position, roundManager.enemyWaypoints[currentWaypoint].position) < 1f)
+
+                if (Vector3.Distance(transform.position, roundManager.enemyWaypoints[currentWaypoint].position) < .5f)
                 {
-                    agent.speed = 0;
-                    if (currentWaypoint < roundManager.enemyWaypoints.Length)
+                    if (currentWaypoint <= roundManager.enemyWaypoints.Length)
                     {
                         currentWaypoint++;
                     }
@@ -110,10 +113,7 @@ public class Enemy : MonoBehaviour
                     }
                 }
             }
+            
         }
-        Debug.Log("Last one");
-        agent.SetDestination(destination.position);
-
-
     }
 }
