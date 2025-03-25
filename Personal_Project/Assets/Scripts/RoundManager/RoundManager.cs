@@ -36,8 +36,8 @@ public class RoundManager : MonoBehaviour
     public GameObject UnitBeingPlaced;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {
-        healthLoss = GameObject.Find("EnemyDestination").GetComponent<HealthLoss>();
+    { 
+        healthLoss = GameObject.Find("Enemy Destination").GetComponent<HealthLoss>();
         roundUI = GetComponentInParent<RoundUI>();
         roundUI.updateHealthCounter(health);
         roundUI.updateRoundCounter(round);
