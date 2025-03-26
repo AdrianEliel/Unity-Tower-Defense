@@ -98,10 +98,10 @@ public abstract class GeneralUnit : MonoBehaviour
     {
         if(Physics.Raycast(transform.position, Vector3.down, 2, data.placeLayer))
         {
-            return false;
+            return true;
         }
 
-        return true;
+        return false;
     }
     
     public void HandleShoot()
