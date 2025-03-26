@@ -70,9 +70,9 @@ public abstract class GeneralUnit : MonoBehaviour
             transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.y));
             transform.position = new Vector3(transform.position.x, 1, transform.position.z);
 
-            if (Input.GetMouseButtonDown(0)&&roundManager.gold>=data.price)
+            if (Input.GetMouseButtonDown(0) && roundManager.gold>=data.price)
             {
-                if(Physics.Raycast(transform.position, Vector3.down, Mathf.Infinity, data.placeLayer))
+                if(checkGround())
                 {
                     placed = true;
                     roundManager.updateGoldAmount(-data.price);
@@ -92,6 +92,16 @@ public abstract class GeneralUnit : MonoBehaviour
             roundManager.isUnitBeingPlaced = false;
             roundManager.UnitBeingPlaced = null;
         }
+    }
+
+    private bool checkGround()
+    {
+        if(Physics.Raycast(transform.position, Vector3.down, 2, data.placeLayer))
+        {
+            return false;
+        }
+
+        return true;
     }
     
     public void HandleShoot()

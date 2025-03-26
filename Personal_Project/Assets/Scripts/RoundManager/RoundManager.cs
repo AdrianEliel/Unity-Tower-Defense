@@ -76,6 +76,10 @@ public class RoundManager : MonoBehaviour
     {
         if(roundStarted == false)
         {
+            if (currentRound != 0)
+            {
+                updateGoldAmount(100+currentRound);
+            }
             if (currentRound <= weakRounds)
             {
                 currentRound++;

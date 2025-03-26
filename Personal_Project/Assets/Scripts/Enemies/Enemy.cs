@@ -106,7 +106,7 @@ public class Enemy : MonoBehaviour
 
                     if (Vector3.Distance(transform.position, roundManager.enemyWaypoints[currentWaypoint].position) < .5f)
                     {
-                        if (currentWaypoint < roundManager.enemyWaypoints.Length)
+                        if (currentWaypoint < roundManager.enemyWaypoints.Length-1)
                         {
                            currentWaypoint++;
                         }

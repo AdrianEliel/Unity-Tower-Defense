@@ -1,11 +1,11 @@
 using System.Collections;
 using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 
 public class Soldier : GeneralUnit
 {
     public Transform gun;
-    public Transform targetWorld;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public override void Start()
     {
@@ -29,7 +29,12 @@ public class Soldier : GeneralUnit
 
     public override void Shoot()
     {
-        StartCoroutine(AttackFire(enemyLookedAt.transform.position));
+        
+        if(enemyLookedAt.name == (data.target.name + "(Clone)"))
+        {
+            StartCoroutine(AttackFire(enemyLookedAt.transform.position));
+        }
+        
     }
     
     IEnumerator AttackFire(Vector3 target)
@@ -60,6 +65,5 @@ public class Soldier : GeneralUnit
         enemy.takeDamage();
         
     }
-
 
 }

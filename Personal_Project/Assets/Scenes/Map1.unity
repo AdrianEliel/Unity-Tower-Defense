@@ -386,7 +386,7 @@ Transform:
   m_GameObject: {fileID: 40212244}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.900001, y: 1, z: -3.3}
+  m_LocalPosition: {x: -14.900001, y: 1, z: -3.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -5100,7 +5100,7 @@ MonoBehaviour:
   health: 100
   round: 0
   difficulty: 1
-  gold: 200
+  gold: 1000
   Spawners:
   - {fileID: 931755536}
   enemiesToSpawn: 20
