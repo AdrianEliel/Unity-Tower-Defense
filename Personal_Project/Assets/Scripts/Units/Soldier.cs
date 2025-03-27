@@ -66,4 +66,21 @@ public class Soldier : GeneralUnit
         
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if(other.gameObject.name == "Soldier Collider")
+        {
+            canBePlaced = false;
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.name == "Solider Collider")
+        {
+            canBePlaced = true;
+        }
+        
+    }
+
 }

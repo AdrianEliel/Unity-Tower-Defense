@@ -17,6 +17,7 @@ public abstract class GeneralUnit : MonoBehaviour
     public GameObject enemyLookedAt;
 
     [Header("Buying & placing")]
+    public bool canBePlaced = true;
     public float yOffset = 1;
     public bool placed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -72,7 +73,7 @@ public abstract class GeneralUnit : MonoBehaviour
 
             if (Input.GetMouseButtonDown(0) && roundManager.gold>=data.price)
             {
-                if(checkGround())
+                if(checkGround() && canBePlaced)
                 {
                     placed = true;
                     roundManager.updateGoldAmount(-data.price);
@@ -101,12 +102,10 @@ public abstract class GeneralUnit : MonoBehaviour
         {
             if (hit.transform.CompareTag("PlacementAllowed"))
             {
-                Debug.Log(hit.transform.CompareTag("PlacementAllowed"));
                 return true;
             }
             
         }
-        Debug.Log(hit.transform.CompareTag("PlacementAllowed"));
         return false;
     }
     
