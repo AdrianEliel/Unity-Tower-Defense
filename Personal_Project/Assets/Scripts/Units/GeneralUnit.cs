@@ -96,11 +96,17 @@ public abstract class GeneralUnit : MonoBehaviour
 
     private bool checkGround()
     {
-        if(Physics.Raycast(transform.position, Vector3.down, 2, data.placeLayer))
+        RaycastHit hit;
+        if(Physics.Raycast(transform.position, Vector3.down, out hit, 2))
         {
-            return true;
+            if (hit.transform.CompareTag("PlacementAllowed"))
+            {
+                Debug.Log(hit.transform.CompareTag("PlacementAllowed"));
+                return true;
+            }
+            
         }
-
+        Debug.Log(hit.transform.CompareTag("PlacementAllowed"));
         return false;
     }
     
