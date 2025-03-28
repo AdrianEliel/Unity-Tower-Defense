@@ -1,17 +1,14 @@
-using System.Collections;
-using Unity.VisualScripting;
-using UnityEditor;
 using UnityEngine;
 
-public class Soldier : GeneralUnit
+public class Hunter : GeneralUnit
 {
+    public Transform weapon;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public override void Start()
     {
         base.Start();
         weapon = gameObject.GetComponentInChildren<GetGunData>().GetGunTransform();
-       
-    }   
+    }
 
     // Update is called once per frame
     public override void Update()
@@ -28,12 +25,9 @@ public class Soldier : GeneralUnit
 
     public override void Shoot()
     {
-        
-        if(enemyLookedAt.name == (data.target.name + "(Clone)"))
+        if (enemyLookedAt.name == (data.target.name + "(Clone)"))
         {
             StartCoroutine(AttackFire(enemyLookedAt.transform.position));
         }
-        
     }
-
 }

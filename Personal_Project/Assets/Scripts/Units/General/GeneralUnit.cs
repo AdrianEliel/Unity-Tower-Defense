@@ -1,4 +1,5 @@
 using Unity.VisualScripting;
+using System.Collections;
 using UnityEngine;
 
 public abstract class GeneralUnit : MonoBehaviour
@@ -8,10 +9,12 @@ public abstract class GeneralUnit : MonoBehaviour
     public RoundManager roundManager;
 
     [Header("Targeting variables")]
+    public Rigidbody rb;
     public bool isInRange;
 
     [Header("Attacking")]
     public float nextTimeToFire;
+    public Transform weapon;
 
     [Header("Enemy")]
     public GameObject enemyLookedAt;
@@ -24,29 +27,43 @@ public abstract class GeneralUnit : MonoBehaviour
     public virtual void Start()
     {
         roundManager = GameObject.Find("Round Manager").GetComponent<RoundManager>();
+        rb = GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame
     public virtual void Update()
     {
         placeUnit();
+
     }
 
-    private void OnTriggerStay(Collider other)
+    protected void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
             isInRange = true;
-            transform.LookAt(other.transform.position);
+            Vector3 enemyPos = new Vector3(other.transform.position.x, 1, other.transform.position.z);
+            transform.LookAt(enemyPos);
             enemyLookedAt = other.gameObject;
         }
+
+        if (other.gameObject.name == "Placement Collider")
+        {
+            canBePlaced = false;
+        }
     }
-    private void OnTriggerExit(Collider other)
+    protected void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
             isInRange = false;
             enemyLookedAt = null;
+        }
+
+        if (other.gameObject.name == "Placement Collider")
+        {
+            canBePlaced = true;
         }
     }
 
@@ -114,4 +131,33 @@ public abstract class GeneralUnit : MonoBehaviour
         Shoot();
     }
     public abstract void Shoot();
+
+    protected IEnumerator AttackFire(Vector3 target)
+    {
+        Enemy enemy = null;
+        GameObject attackTrail = Instantiate(data.attackTrail, weapon.transform.position, Quaternion.identity);
+        if (attackTrail != null)
+        {
+            BulletController bulletController = attackTrail.GetComponent<BulletController>();
+        }
+
+        if (enemyLookedAt != null)
+        {
+            enemy = enemyLookedAt.GetComponent<Enemy>();
+        }
+
+
+        while (attackTrail != null && Vector3.Distance(attackTrail.transform.position, target) > .001f)
+        {
+            attackTrail.transform.position = Vector3.MoveTowards(attackTrail.transform.position, target, Time.deltaTime * data.attackSpeed);
+            yield return null;
+        }
+
+        Destroy(attackTrail);
+
+
+        Debug.Log(enemyLookedAt + " was hit");
+        enemy.takeDamage();
+
+    }
 }
