@@ -1,6 +1,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.UIElements;
 
 public class Enemy : MonoBehaviour
 {
@@ -29,8 +30,8 @@ public class Enemy : MonoBehaviour
         Physics.IgnoreLayerCollision(7, 7);
         rb = GetComponent<Rigidbody>(); 
         roundManager = GameObject.Find("Round Manager").GetComponent<RoundManager>();
-        healthLoss = GameObject.Find("EnemyDestination").GetComponent<HealthLoss>();
-        destination = GameObject.Find("EnemyDestination").transform;
+        healthLoss = GameObject.Find("Enemy Destination").GetComponent<HealthLoss>();
+        destination = GameObject.Find("Enemy Destination").transform;
         enemyType = checkEnemyType();
         speed = data.speed;
         health = data.health; 
@@ -42,8 +43,12 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        StartCoroutine(moveToWayPoints());
         LiveOrDie();
+        StartCoroutine(moveToWayPoints());
+    }
+    private void FixedUpdate()
+    {
+        
     }
     public string checkEnemyType()
     {
@@ -93,28 +98,31 @@ public class Enemy : MonoBehaviour
         while (atTheEnd == false)
         {
             yield return null;
-            if (roundManager.enemyWaypoints.Length > 1 && roundManager.enemyWaypoints[currentWaypoint] != null)
+            if(agent!=null && gameObject != null)
             {
-                agent.speed = speed;
-                agent.SetDestination(roundManager.enemyWaypoints[currentWaypoint].position);
-                if (Vector3.Distance(transform.position, roundManager.enemyWaypoints[currentWaypoint].position) < 1f)
+                if (roundManager.enemyWaypoints.Length > 1 && roundManager.enemyWaypoints[currentWaypoint] != null)
                 {
-                    agent.speed = 0;
-                    if (currentWaypoint < roundManager.enemyWaypoints.Length)
+                    agent.SetDestination(roundManager.enemyWaypoints[currentWaypoint].position);
+
+                    if (Vector3.Distance(transform.position, roundManager.enemyWaypoints[currentWaypoint].position) < .5f)
                     {
-                        currentWaypoint++;
-                    }
-                    else
-                    {
-                        atTheEnd = true;
+                        if (currentWaypoint < roundManager.enemyWaypoints.Length-1)
+                        {
+                           currentWaypoint++;
+                        }
+                        else
+                        {
+                            atTheEnd = true;
+                        }
                     }
                 }
             }
         }
 
         Debug.Log("Last one");
+
         agent.SetDestination(destination.position);
-
-
     }
+
+
 }

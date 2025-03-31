@@ -1,4 +1,5 @@
 using Unity.VisualScripting;
+using System.Collections;
 using UnityEngine;
 
 public abstract class GeneralUnit : MonoBehaviour
@@ -8,44 +9,61 @@ public abstract class GeneralUnit : MonoBehaviour
     public RoundManager roundManager;
 
     [Header("Targeting variables")]
+    public Rigidbody rb;
     public bool isInRange;
 
     [Header("Attacking")]
     public float nextTimeToFire;
+    public Transform weapon;
 
     [Header("Enemy")]
     public GameObject enemyLookedAt;
 
     [Header("Buying & placing")]
+    public bool canBePlaced = true;
     public float yOffset = 1;
     public bool placed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public virtual void Start()
     {
         roundManager = GameObject.Find("Round Manager").GetComponent<RoundManager>();
+        rb = GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame
     public virtual void Update()
     {
         placeUnit();
+
     }
 
-    private void OnTriggerStay(Collider other)
+    protected void OnTriggerStay(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
             isInRange = true;
-            transform.LookAt(other.transform.position);
+            Vector3 enemyPos = new Vector3(other.transform.position.x, 1, other.transform.position.z);
+            transform.LookAt(enemyPos);
             enemyLookedAt = other.gameObject;
         }
+
+        if (other.gameObject.name == "Placement Collider")
+        {
+            canBePlaced = false;
+        }
     }
-    private void OnTriggerExit(Collider other)
+    protected void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
             isInRange = false;
             enemyLookedAt = null;
+        }
+
+        if (other.gameObject.name == "Placement Collider")
+        {
+            canBePlaced = true;
         }
     }
 
@@ -70,9 +88,9 @@ public abstract class GeneralUnit : MonoBehaviour
             transform.position = Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, Camera.main.transform.position.y));
             transform.position = new Vector3(transform.position.x, 1, transform.position.z);
 
-            if (Input.GetMouseButtonDown(0)&&roundManager.gold>=data.price)
+            if (Input.GetMouseButtonDown(0) && roundManager.gold>=data.price)
             {
-                if(Physics.Raycast(transform.position, Vector3.down, Mathf.Infinity, data.placeLayer))
+                if(checkGround() && canBePlaced)
                 {
                     placed = true;
                     roundManager.updateGoldAmount(-data.price);
@@ -93,10 +111,53 @@ public abstract class GeneralUnit : MonoBehaviour
             roundManager.UnitBeingPlaced = null;
         }
     }
+
+    private bool checkGround()
+    {
+        RaycastHit hit;
+        if(Physics.Raycast(transform.position, Vector3.down, out hit, 2))
+        {
+            if (hit.transform.CompareTag("PlacementAllowed"))
+            {
+                return true;
+            }
+            
+        }
+        return false;
+    }
     
     public void HandleShoot()
     {
         Shoot();
     }
     public abstract void Shoot();
+
+    protected IEnumerator AttackFire(Vector3 target)
+    {
+        Enemy enemy = null;
+        GameObject attackTrail = Instantiate(data.attackTrail, weapon.transform.position, Quaternion.identity);
+        if (attackTrail != null)
+        {
+            BulletController bulletController = attackTrail.GetComponent<BulletController>();
+        }
+
+        if (enemyLookedAt != null)
+        {
+            enemy = enemyLookedAt.GetComponent<Enemy>();
+        }
+
+
+        while (attackTrail != null && Vector3.Distance(attackTrail.transform.position, target) > .001f)
+        {
+            attackTrail.transform.position = Vector3.MoveTowards(attackTrail.transform.position, target, Time.deltaTime * data.attackSpeed);
+            yield return null;
+        }
+
+        Destroy(attackTrail);
+
+
+        Debug.Log(enemyLookedAt + " was hit");
+        enemy.takeDamage();
+
+    }
 }
