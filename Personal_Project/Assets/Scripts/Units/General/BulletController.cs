@@ -19,6 +19,7 @@ public class BulletController : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Enemy"))
         {
+            transform.LookAt(other.transform.position);
             enemyTouched = true;
         }
     }

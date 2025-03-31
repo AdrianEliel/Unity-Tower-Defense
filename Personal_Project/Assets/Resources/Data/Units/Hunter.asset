@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7540f0079d0566740893e87a25d8fb8d, type: 3}
   m_Name: Hunter
   m_EditorClassIdentifier: 
-  weaponName: Stake
+  weaponName: Bow
   attackTrail: {fileID: 7329558018377836878, guid: 9d4322f55120a6d4fa1b62f6db8518bf, type: 3}
   attackRate: 3
   attackSpeed: 45

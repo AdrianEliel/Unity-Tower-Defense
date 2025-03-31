@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Transactions;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class RoundManager : MonoBehaviour
@@ -20,7 +21,6 @@ public class RoundManager : MonoBehaviour
     public int currentRound;
     public int weakRounds;
     public int moderateRounds;
-    public int strongRounds;
     public bool roundStarted;
 
     [Header("Enemies")]
@@ -54,9 +54,9 @@ public class RoundManager : MonoBehaviour
         Vector3 spawnPos = Spawners[Random.Range(0,Spawners.Length)].transform.position;
         Instantiate(enemy, spawnPos, transform.rotation);
     }
-    IEnumerator spawnWeakRound(int numEnemies)
+    IEnumerator spawnWeakRound(int numRedEnemies)
     {
-        for(int i =0; i < numEnemies; i++)
+        for(int i =0; i < numRedEnemies; i++)
         {
             SpawnEnemy(enemies[0]);
             yield return new WaitForSeconds(.3f);
@@ -67,8 +67,14 @@ public class RoundManager : MonoBehaviour
     {
         for (int i = 0; i < numEnemies; i++)
         {
-            int currentEnemy = Random.Range(0, enemies.Length - 1);
-            SpawnEnemy(enemies[currentEnemy]);
+            if(i%2 == 0)
+            {
+                SpawnEnemy(enemies[1]);
+            }
+            else
+            {
+                SpawnEnemy(enemies[0]);
+            }
             yield return new WaitForSeconds(.3f);
         }
     }
@@ -80,6 +86,7 @@ public class RoundManager : MonoBehaviour
             {
                 updateGoldAmount(100+currentRound);
             }
+
             if (currentRound <= weakRounds)
             {
                 currentRound++;
@@ -94,6 +101,11 @@ public class RoundManager : MonoBehaviour
                 roundUI.updateRoundCounter(currentRound);
                 roundStarted=true;
                 StartCoroutine(spawnMediumRounds(enemiesToSpawn));
+            }
+
+            else
+            {
+
             }
         }
         

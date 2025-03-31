@@ -118,7 +118,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6738470558943811413}
   - component: {fileID: 7812080881413577961}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: EnemyRange
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -155,7 +155,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -326,11 +326,11 @@ MonoBehaviour:
   rb: {fileID: 0}
   isInRange: 0
   nextTimeToFire: 0
+  weapon: {fileID: 0}
   enemyLookedAt: {fileID: 0}
   canBePlaced: 1
   yOffset: 1
   placed: 0
-  gun: {fileID: 0}
 --- !u!54 &6432091657761437785
 Rigidbody:
   m_ObjectHideFlags: 0

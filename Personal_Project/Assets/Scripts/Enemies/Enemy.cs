@@ -93,6 +93,14 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private void increaseSpeedAtRoundEnd()
+    {
+        if(roundManager.currentRound % 2 == 0 && roundManager.currentRound<data.roundSpeedLimit)
+        {
+            speed += .1f;
+        }
+    }
+
     private IEnumerator moveToWayPoints()
     {
         while (atTheEnd == false)

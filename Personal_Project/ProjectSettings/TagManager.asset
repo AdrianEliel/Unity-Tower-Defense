@@ -17,8 +17,8 @@ TagManager:
   - Path
   - Characters
   - Ground
-  - PlayerColliders
-  - 
+  - PlacementColliders
+  - EnemyRangeColliders
   - 
   - 
   - 
