@@ -111,6 +111,7 @@ public class Enemy : MonoBehaviour
                 }
             }
         }
+
         Debug.Log("Last one");
         agent.SetDestination(destination.position);
 
