@@ -18,7 +18,7 @@ public class Enemy : MonoBehaviour
     [Header("Enemy Data")]
     public Rigidbody rb;
     public EnemyData data;
-    private int health;
+    [SerializeField] private int health;
     private float speed;
     private string enemyType;
     private int damageStrength;

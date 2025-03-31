@@ -281,8 +281,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8814929576926208547}
-  - component: {fileID: 8637465985566139010}
   - component: {fileID: 6432091657761437785}
+  - component: {fileID: 6244729746242738161}
   m_Layer: 0
   m_Name: Hunter
   m_TagString: Player
@@ -309,28 +309,6 @@ Transform:
   - {fileID: 6738470558943811413}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8637465985566139010
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5835206122473997720}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03e44b416e2154d43bca29ee0100940e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 6a3e3c0033634324eb53c0c6f32a6b39, type: 2}
-  roundManager: {fileID: 0}
-  rb: {fileID: 0}
-  isInRange: 0
-  nextTimeToFire: 0
-  enemyLookedAt: {fileID: 0}
-  canBePlaced: 1
-  yOffset: 1
-  placed: 0
-  gun: {fileID: 0}
 --- !u!54 &6432091657761437785
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -358,6 +336,28 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &6244729746242738161
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5835206122473997720}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a9304e614489f3645afeacb415bea98b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  data: {fileID: 11400000, guid: fc83822e58d7dba42bad6dd92ce6c7db, type: 2}
+  roundManager: {fileID: 0}
+  rb: {fileID: 0}
+  isInRange: 0
+  nextTimeToFire: 0
+  weapon: {fileID: 0}
+  enemyLookedAt: {fileID: 0}
+  canBePlaced: 1
+  yOffset: 1
+  placed: 0
 --- !u!1 &8152771875363116550
 GameObject:
   m_ObjectHideFlags: 0
@@ -506,10 +506,30 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 8294193062257821869, guid: 4faef10732890e946929f57ebc3494f7, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3039562737389873883}
   m_SourcePrefab: {fileID: 3150474306388093854, guid: 4faef10732890e946929f57ebc3494f7, type: 3}
 --- !u!4 &1293731815574294636 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2414766017345854302, guid: 4faef10732890e946929f57ebc3494f7, type: 3}
   m_PrefabInstance: {fileID: 3492184020538149682}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &4858361967583937439 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8294193062257821869, guid: 4faef10732890e946929f57ebc3494f7, type: 3}
+  m_PrefabInstance: {fileID: 3492184020538149682}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &3039562737389873883
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4858361967583937439}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 97eac686001aa46469036b4efaaaa05e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
