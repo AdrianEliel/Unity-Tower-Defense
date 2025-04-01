@@ -21,7 +21,6 @@ public abstract class GeneralUnit : MonoBehaviour
 
     [Header("Buying & placing")]
     public bool canBePlaced = true;
-    public float yOffset = 1;
     public bool placed;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     public virtual void Start()
@@ -40,7 +39,7 @@ public abstract class GeneralUnit : MonoBehaviour
 
     protected void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Enemy"))
+        if (other.gameObject.CompareTag("Enemy") && other.gameObject.name == data.target.name +"(Clone)")
         {
             isInRange = true;
             Vector3 enemyPos = new Vector3(other.transform.position.x, 1, other.transform.position.z);
@@ -48,7 +47,7 @@ public abstract class GeneralUnit : MonoBehaviour
             enemyLookedAt = other.gameObject;
         }
 
-        if (other.gameObject.name == "Placement Collider")
+        if (other.gameObject.CompareTag("PlacementRangeCollider"))
         {
             canBePlaced = false;
         }
@@ -61,7 +60,7 @@ public abstract class GeneralUnit : MonoBehaviour
             enemyLookedAt = null;
         }
 
-        if (other.gameObject.name == "Placement Collider")
+        if (other.gameObject.CompareTag("PlacementRangeCollider"))
         {
             canBePlaced = true;
         }
@@ -117,7 +116,7 @@ public abstract class GeneralUnit : MonoBehaviour
         RaycastHit hit;
         if(Physics.Raycast(transform.position, Vector3.down, out hit, 2))
         {
-            if (hit.transform.CompareTag("PlacementAllowed"))
+            if (hit.transform.CompareTag("UnitPlacementAllowed"))
             {
                 return true;
             }

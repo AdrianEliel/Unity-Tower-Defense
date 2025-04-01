@@ -406,7 +406,7 @@ GameObject:
   - component: {fileID: 170310045}
   m_Layer: 8
   m_Name: Ground
-  m_TagString: PlacementAllowed
+  m_TagString: UnitPlacementAllowed
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5100,7 +5100,7 @@ MonoBehaviour:
   health: 100
   round: 0
   difficulty: 1
-  gold: 1000
+  gold: 250
   Spawners:
   - {fileID: 931755536}
   enemiesToSpawn: 20
