@@ -149,6 +149,7 @@ public abstract class GeneralUnit : MonoBehaviour
         while (attackTrail != null && Vector3.Distance(attackTrail.transform.position, target) > .001f)
         {
             attackTrail.transform.position = Vector3.MoveTowards(attackTrail.transform.position, target, Time.deltaTime * data.attackSpeed);
+            attackTrail.transform.LookAt(target);
             yield return null;
         }
 
