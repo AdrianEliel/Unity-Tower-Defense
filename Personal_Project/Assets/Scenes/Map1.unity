@@ -5100,7 +5100,7 @@ MonoBehaviour:
   health: 100
   round: 0
   difficulty: 1
-  gold: 250
+  gold: 1000000000
   Spawners:
   - {fileID: 931755536}
   enemiesToSpawn: 20
