@@ -974,7 +974,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 11
   m_Type: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.075694196, g: 0.08051606, b: 0.1981132, a: 1}
   m_Intensity: 2
   m_Range: 10
   m_SpotAngle: 30
@@ -5100,7 +5100,7 @@ MonoBehaviour:
   health: 100
   round: 0
   difficulty: 1
-  gold: 1000000000
+  gold: 250
   Spawners:
   - {fileID: 931755536}
   enemiesToSpawn: 20
