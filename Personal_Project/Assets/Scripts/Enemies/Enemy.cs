@@ -5,11 +5,13 @@ using UnityEngine.UIElements;
 
 public class Enemy : MonoBehaviour
 {
+    private Enemy instance;
+
     [Header("Script Refs")]
     private HealthLoss healthLoss;
     private RoundManager roundManager;
 
-    [Header ("Movement Data")]
+    [Header("Movement Data")]
     public NavMeshAgent agent;
     public Transform destination;
     public int currentWaypoint;
@@ -20,19 +22,19 @@ public class Enemy : MonoBehaviour
     public EnemyData data;
     [SerializeField] private int health;
     private float speed;
-    private string enemyType;
     private int damageStrength;
     private int goldAmount;
     private bool atTheEnd;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        instance = this;
         Physics.IgnoreLayerCollision(7, 7);
         rb = GetComponent<Rigidbody>(); 
         roundManager = GameObject.Find("Round Manager").GetComponent<RoundManager>();
         healthLoss = GameObject.Find("Enemy Destination").GetComponent<HealthLoss>();
         destination = GameObject.Find("Enemy Destination").transform;
-        enemyType = checkEnemyType();
+        agent = GetComponent<NavMeshAgent>();
         speed = data.speed;
         health = data.health; 
         damageStrength = data.damageStrength;
@@ -45,27 +47,13 @@ public class Enemy : MonoBehaviour
     {
         LiveOrDie();
         StartCoroutine(moveToWayPoints());
+
+        
     }
     private void FixedUpdate()
     {
         
     }
-    public string checkEnemyType()
-    {
-        if (data.vampire == true)
-        {
-            return "vampire";
-        }
-        else if (data.werewolf == true)
-        {
-            return "werewolf";
-        }
-        else
-        {
-            return "zombie";
-        }
-    }
-
     public int getStrength()
     {
         return damageStrength;
@@ -93,42 +81,31 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    private void increaseSpeedAtRoundEnd()
-    {
-        if(roundManager.currentRound % 2 == 0 && roundManager.currentRound<data.roundSpeedLimit)
-        {
-            speed += .1f;
-        }
-    }
-
     private IEnumerator moveToWayPoints()
     {
         while (atTheEnd == false)
         {
             yield return null;
-            if(agent!=null && gameObject != null)
+            if (roundManager.enemyWaypoints.Length > 1 && roundManager.enemyWaypoints[currentWaypoint] != null)
             {
-                if (roundManager.enemyWaypoints.Length > 1 && roundManager.enemyWaypoints[currentWaypoint] != null)
+                if(isActiveAndEnabled)
                 {
                     agent.SetDestination(roundManager.enemyWaypoints[currentWaypoint].position);
+                }
 
-                    if (Vector3.Distance(transform.position, roundManager.enemyWaypoints[currentWaypoint].position) < .5f)
+                if (Vector3.Distance(transform.position, roundManager.enemyWaypoints[currentWaypoint].position) < .5f)
+                {
+                    if (currentWaypoint < roundManager.enemyWaypoints.Length - 1)
                     {
-                        if (currentWaypoint < roundManager.enemyWaypoints.Length-1)
-                        {
-                           currentWaypoint++;
-                        }
-                        else
-                        {
-                            atTheEnd = true;
-                        }
+                        currentWaypoint++;
+                    }
+                    else
+                    {
+                        atTheEnd = true;
                     }
                 }
             }
         }
-
-        Debug.Log("Last one");
-
         agent.SetDestination(destination.position);
     }
 

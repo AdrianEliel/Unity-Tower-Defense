@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 5395728486566546752}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.43, y: 1, z: 11.56}
+  m_LocalPosition: {x: -17.43, y: 1.1, z: 11.56}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -152,6 +152,7 @@ MonoBehaviour:
   currentWaypoint: 0
   rb: {fileID: 0}
   data: {fileID: 11400000, guid: f1981edfbde9c6a49a425cd5ee080c92, type: 2}
+  health: 0
 --- !u!54 &2659196096661369088
 Rigidbody:
   m_ObjectHideFlags: 0
