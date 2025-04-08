@@ -54,7 +54,7 @@ public class RoundManager : MonoBehaviour
         Vector3 spawnPos = Spawners[Random.Range(0,Spawners.Length)].transform.position;
         Instantiate(enemy, spawnPos, transform.rotation);
     }
-    IEnumerator spawnWeakRound(int numRedEnemies)
+    IEnumerator zombieRounds(int numRedEnemies)
     {
         for(int i =0; i < numRedEnemies; i++)
         {
@@ -63,11 +63,11 @@ public class RoundManager : MonoBehaviour
         }
     }
 
-    IEnumerator spawnMediumRounds(int numEnemies)
+    IEnumerator vampireRounds(int numEnemies)
     {
         for (int i = 0; i < numEnemies; i++)
         {
-            if(i%2 == 0)
+            if(i%3 == 0)
             {
                 SpawnEnemy(enemies[1]);
             }
@@ -78,6 +78,26 @@ public class RoundManager : MonoBehaviour
             yield return new WaitForSeconds(.3f);
         }
     }
+    IEnumerator werewolfRounds(int numEnemies)
+    {
+        for (int i = 0; i < numEnemies; i++)
+        {
+            if (i % 4 == 0)
+            {
+                SpawnEnemy(enemies[2]);
+            }
+            else if (i % 3 == 0)
+            {
+                SpawnEnemy(enemies[1]);
+            }
+            else
+            {
+                SpawnEnemy(enemies[0]);
+            }
+            yield return new WaitForSeconds(.3f);
+        }
+    }
+
     public void startRound()
     {
         if(roundStarted == false)
@@ -89,26 +109,30 @@ public class RoundManager : MonoBehaviour
 
             if (currentRound <= weakRounds)
             {
-                currentRound++;
-                roundUI.updateRoundCounter(currentRound);
-                roundStarted = true;
-                StartCoroutine(spawnWeakRound(enemiesToSpawn));
+                RoundStartHelper();
+                StartCoroutine(zombieRounds(enemiesToSpawn));
             }
 
             else if (currentRound <= moderateRounds)
             {
-                currentRound++;
-                roundUI.updateRoundCounter(currentRound);
-                roundStarted=true;
-                StartCoroutine(spawnMediumRounds(enemiesToSpawn));
+                RoundStartHelper();
+                StartCoroutine(vampireRounds(enemiesToSpawn));
             }
 
-            else
+            else if(currentRound%50 != 0)
             {
-
+                RoundStartHelper();
+                StartCoroutine(werewolfRounds(enemiesToSpawn));
             }
         }
         
+    }
+
+    private void RoundStartHelper()
+    {
+        currentRound++;
+        roundUI.updateRoundCounter(currentRound);
+        roundStarted = true;
     }
     public void updateEnemiesToSpawn()
     {

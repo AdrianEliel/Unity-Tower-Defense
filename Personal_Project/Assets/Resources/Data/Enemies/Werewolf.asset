@@ -12,10 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f62cbfeabc6c2c040a2b60a3cae4bfe7, type: 3}
   m_Name: Werewolf
   m_EditorClassIdentifier: 
-  health: 3
-  speed: 8
+  health: 10
+  speed: 3
   damageStrength: 5
   goldAmount: 10
+  roundSpeedLimit: 0
   vampire: 0
   zombie: 0
   werewolf: 1
