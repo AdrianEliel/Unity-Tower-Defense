@@ -35,7 +35,7 @@ public class Enemy : MonoBehaviour
         healthLoss = GameObject.Find("Enemy Destination").GetComponent<HealthLoss>();
         destination = GameObject.Find("Enemy Destination").transform;
         agent = GetComponent<NavMeshAgent>();
-        speed = data.speed;
+        agent.speed = data.speed;
         health = data.health; 
         damageStrength = data.damageStrength;
         goldAmount = data.goldAmount;
@@ -48,7 +48,6 @@ public class Enemy : MonoBehaviour
         LiveOrDie();
         StartCoroutine(moveToWayPoints());
 
-        
     }
     private void FixedUpdate()
     {
