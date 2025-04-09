@@ -78,7 +78,7 @@ public class RoundManager : MonoBehaviour
             }
             else
             {
-                SpawnEnemy(enemies[0]);
+                SpawnEnemy(enemies[3]);
             }
             yield return new WaitForSeconds(.3f);
         }
@@ -97,7 +97,7 @@ public class RoundManager : MonoBehaviour
             }
             else
             {
-                SpawnEnemy(enemies[0]);
+                SpawnEnemy(enemies[3]);
             }
             yield return new WaitForSeconds(.3f);
         }
