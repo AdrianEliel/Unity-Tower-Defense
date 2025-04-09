@@ -39,7 +39,7 @@ public abstract class GeneralUnit : MonoBehaviour
 
     protected void OnTriggerStay(Collider other)
     {
-        if (other.gameObject.CompareTag("Enemy") && other.gameObject.name == data.target.name +"(Clone)")
+        if (other.gameObject.CompareTag("Enemy") && checkForTarget(other.gameObject))
         {
             isInRange = true;
             Vector3 enemyPos = new Vector3(other.transform.position.x, 1, other.transform.position.z);
@@ -130,6 +130,18 @@ public abstract class GeneralUnit : MonoBehaviour
         Shoot();
     }
     public abstract void Shoot();
+
+    public bool checkForTarget(GameObject enemyLookedAt)
+    {
+        foreach (GameObject enemy in data.targets)
+        {
+            if (enemy.name+"(Clone)" == enemyLookedAt.name)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 
     protected IEnumerator AttackFire(Vector3 target)
     {

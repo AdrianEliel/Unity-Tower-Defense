@@ -10,7 +10,7 @@ public class UnitData : ScriptableObject
     public float attackSpeed;
 
     [Header("Targets")]
-    public GameObject target;
+    public GameObject[] targets;
     public LayerMask targetLayer;
 
     [Header("Unit Stats")]

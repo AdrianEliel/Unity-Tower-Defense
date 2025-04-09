@@ -5112,7 +5112,11 @@ MonoBehaviour:
   - {fileID: 5395728486566546752, guid: 0e7aecdfddc20f14fb67aa2c1f7c02bb, type: 3}
   - {fileID: 5395728486566546752, guid: f343cfe096f021e4f95e38d44d2e9fc1, type: 3}
   - {fileID: 5395728486566546752, guid: 4a359ac26cc407048a126ca2b31acc0e, type: 3}
+  - {fileID: 5395728486566546752, guid: 7be4bb5064c72304aa878e81eda79886, type: 3}
   enemiesKilled: 0
+  zombie: {fileID: 0}
+  vampire: {fileID: 0}
+  wereWolf: {fileID: 0}
   enemyWaypoints:
   - {fileID: 1364316353}
   - {fileID: 693345314}

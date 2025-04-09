@@ -24,7 +24,7 @@ public class Hunter : GeneralUnit
 
     public override void Shoot()
     {
-        if (enemyLookedAt.name == (data.target.name + "(Clone)"))
+        if (checkForTarget(enemyLookedAt))
         {
             StartCoroutine(AttackFire(enemyLookedAt.transform.position));
         }
