@@ -27,6 +27,11 @@ public class RoundManager : MonoBehaviour
     public GameObject[] enemies;
     public int enemiesKilled;
 
+    [Header("Enemy data")]
+    public EnemyData zombie;
+    public EnemyData vampire;
+    public EnemyData wereWolf;
+
     [Header("Enemy Movement")]
     public Transform[] enemyWaypoints;
     
