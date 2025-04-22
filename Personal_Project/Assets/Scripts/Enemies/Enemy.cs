@@ -20,6 +20,7 @@ public class Enemy : MonoBehaviour
     [Header("Enemy Data")]
     public Rigidbody rb;
     public EnemyData data;
+    public GameObject armor;
     [SerializeField] private int health;
     private float speed;
     private int damageStrength;
@@ -39,7 +40,7 @@ public class Enemy : MonoBehaviour
         health = data.health; 
         damageStrength = data.damageStrength;
         goldAmount = data.goldAmount;
-
+        armor = GetComponentInChildren<GetArmor>().gameObject;
     }
 
     // Update is called once per frame
@@ -61,6 +62,10 @@ public class Enemy : MonoBehaviour
     public void takeDamage()
     {
         health--;
+        if ((armor!=null))
+        {
+            Destroy(armor);
+        }
     }
 
     private void LiveOrDie()

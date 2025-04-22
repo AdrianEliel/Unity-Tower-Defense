@@ -21,6 +21,7 @@ public class RoundManager : MonoBehaviour
     public int currentRound;
     public int weakRounds;
     public int moderateRounds;
+    public int harderRounds;
     public bool roundStarted;
 
     [Header("Enemies")]
@@ -68,6 +69,23 @@ public class RoundManager : MonoBehaviour
         }
     }
 
+    IEnumerator strongerZombieRounds(int numEnemies)
+    {
+        for (int i = 0; i < numEnemies; i++)
+        {
+            if (i % 2 == 0)
+            {
+                SpawnEnemy(enemies[0]);
+            }
+            else
+            {
+                SpawnEnemy(enemies[3]);
+            }
+            yield return new WaitForSeconds(.3f);
+        }
+    }
+
+
     IEnumerator vampireRounds(int numEnemies)
     {
         for (int i = 0; i < numEnemies; i++)
@@ -102,6 +120,10 @@ public class RoundManager : MonoBehaviour
             yield return new WaitForSeconds(.3f);
         }
     }
+    IEnumerator bossRounds()
+    {
+        yield return new WaitForSeconds(.3f);
+    }
 
     public void startRound()
     {
@@ -121,13 +143,25 @@ public class RoundManager : MonoBehaviour
             else if (currentRound <= moderateRounds)
             {
                 RoundStartHelper();
+                StartCoroutine(strongerZombieRounds(enemiesToSpawn));
+            }
+
+            else if (currentRound <= harderRounds)
+            {
+                RoundStartHelper();
                 StartCoroutine(vampireRounds(enemiesToSpawn));
             }
 
-            else if(currentRound%50 != 0)
+            else if (currentRound > harderRounds)
             {
                 RoundStartHelper();
                 StartCoroutine(werewolfRounds(enemiesToSpawn));
+            }
+
+            else if(currentRound%30 != 0)
+            {
+                RoundStartHelper();
+                StartCoroutine(bossRounds());
             }
         }
         

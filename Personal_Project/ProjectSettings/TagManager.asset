@@ -8,6 +8,7 @@ TagManager:
   - UnitPlacementAllowed
   - AttackRangeCollider
   - PlacementRangeCollider
+  - Armor
   layers:
   - Default
   - TransparentFX
