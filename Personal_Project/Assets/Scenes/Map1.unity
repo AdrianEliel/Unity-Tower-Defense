@@ -5106,8 +5106,8 @@ MonoBehaviour:
   enemiesToSpawn: 20
   currentRound: 0
   weakRounds: 0
-  moderateRounds: 6
-  harderRounds: 10
+  moderateRounds: 3
+  harderRounds: 8
   roundStarted: 0
   enemies:
   - {fileID: 5395728486566546752, guid: 0e7aecdfddc20f14fb67aa2c1f7c02bb, type: 3}

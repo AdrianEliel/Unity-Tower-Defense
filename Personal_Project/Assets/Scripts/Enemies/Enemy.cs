@@ -5,7 +5,6 @@ using UnityEngine.UIElements;
 
 public class Enemy : MonoBehaviour
 {
-    private Enemy instance;
 
     [Header("Script Refs")]
     private HealthLoss healthLoss;
@@ -27,9 +26,8 @@ public class Enemy : MonoBehaviour
     private int goldAmount;
     private bool atTheEnd;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public virtual void Start()
     {
-        instance = this;
         Physics.IgnoreLayerCollision(7, 7);
         rb = GetComponent<Rigidbody>(); 
         roundManager = GameObject.Find("Round Manager").GetComponent<RoundManager>();
@@ -40,11 +38,10 @@ public class Enemy : MonoBehaviour
         health = data.health; 
         damageStrength = data.damageStrength;
         goldAmount = data.goldAmount;
-        armor = GetComponentInChildren<GetArmor>().gameObject;
     }
 
     // Update is called once per frame
-    void Update()
+    public virtual void Update()
     {
         LiveOrDie();
         StartCoroutine(moveToWayPoints());

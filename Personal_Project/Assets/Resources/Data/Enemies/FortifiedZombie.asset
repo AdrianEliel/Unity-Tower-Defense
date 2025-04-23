@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: FortifiedZombie
   m_EditorClassIdentifier: 
   health: 2
-  speed: 5
+  speed: 6
   damageStrength: 1
   goldAmount: 5
   roundSpeedLimit: 0

@@ -13,8 +13,8 @@ GameObject:
   - component: {fileID: 4055562652085731020}
   - component: {fileID: 7304688822482606999}
   - component: {fileID: 4638815106885433437}
-  - component: {fileID: 4494850477148456393}
   - component: {fileID: 2659196096661369088}
+  - component: {fileID: 9222811186696041852}
   m_Layer: 7
   m_Name: FortifiedZombie
   m_TagString: Enemy
@@ -69,7 +69,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: b9cf09efa5941d54d94cb0c86ea9ae20, type: 2}
+  - {fileID: 2100000, guid: fc863bd46f7f6b347947e42f36bf4792, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -136,24 +136,6 @@ NavMeshAgent:
   m_BaseOffset: 1
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 0
---- !u!114 &4494850477148456393
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5395728486566546752}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bbb152711eb75264bb04fa929e1d5f72, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agent: {fileID: 4638815106885433437}
-  destination: {fileID: 0}
-  currentWaypoint: 0
-  rb: {fileID: 0}
-  data: {fileID: 11400000, guid: f1981edfbde9c6a49a425cd5ee080c92, type: 2}
-  health: 0
 --- !u!54 &2659196096661369088
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -181,6 +163,25 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &9222811186696041852
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5395728486566546752}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a8bd00f57754f2468b3b9f758ad793d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 4638815106885433437}
+  destination: {fileID: 0}
+  currentWaypoint: 0
+  rb: {fileID: 0}
+  data: {fileID: 11400000, guid: b3aaa236f26f46b469ad820bb2faaf41, type: 2}
+  armor: {fileID: 0}
+  health: 0
 --- !u!1 &5434672213948265055
 GameObject:
   m_ObjectHideFlags: 0
@@ -192,8 +193,8 @@ GameObject:
   - component: {fileID: 8225993046520243164}
   - component: {fileID: 2593668632738431307}
   - component: {fileID: 1847678248260024248}
-  - component: {fileID: 1843986581389871782}
   - component: {fileID: 1999031324697305671}
+  - component: {fileID: 4968176577415875213}
   m_Layer: 7
   m_Name: Armor
   m_TagString: Armor
@@ -269,27 +270,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &1843986581389871782
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5434672213948265055}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &1999031324697305671
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -866,8 +846,20 @@ MonoBehaviour:
   m_PreserveMeshAssetOnDestroy: 0
   assetGuid: 
   m_Mesh: {fileID: 0}
-  m_VersionIndex: 9
+  m_VersionIndex: 15
   m_IsSelectable: 1
   m_SelectedFaces: 
   m_SelectedEdges: []
   m_SelectedVertices: 
+--- !u!114 &4968176577415875213
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5434672213948265055}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 96a3098fd712ea24d8739af788731cef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

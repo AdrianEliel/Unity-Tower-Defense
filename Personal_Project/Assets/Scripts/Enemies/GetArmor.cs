@@ -13,4 +13,9 @@ public class GetArmor : MonoBehaviour
     {
         
     }
+
+    public GameObject GetGameObject()
+    {
+        return gameObject;
+    }
 }
