@@ -11,8 +11,6 @@ public class RoundManager : MonoBehaviour
 
     [Header("Game Stats")]
     public int health;
-    public int round;
-    public int difficulty;
     public int gold;
     public GameObject[] Spawners;
 
@@ -46,7 +44,7 @@ public class RoundManager : MonoBehaviour
         healthLoss = GameObject.Find("Enemy Destination").GetComponent<HealthLoss>();
         roundUI = GetComponentInParent<RoundUI>();
         roundUI.updateHealthCounter(health);
-        roundUI.updateRoundCounter(round);
+        roundUI.updateRoundCounter(currentRound);
         roundUI.updateMoneyCounter(gold);
     }
 
@@ -101,6 +99,26 @@ public class RoundManager : MonoBehaviour
             yield return new WaitForSeconds(.3f);
         }
     }
+
+    IEnumerator BatRounds(int numEnemies)
+    {
+        for (int i = 0; i < numEnemies; i++)
+        {
+            if (i % 3 == 0)
+            {
+                SpawnEnemy(enemies[1]);
+            }
+            else if (i % 4==0)
+            {
+                SpawnEnemy(enemies[4]);
+            }
+            else
+            {
+                SpawnEnemy(enemies[3]);
+            }
+            yield return new WaitForSeconds(.3f);
+        }
+    }
     IEnumerator werewolfRounds(int numEnemies)
     {
         for (int i = 0; i < numEnemies; i++)
@@ -129,42 +147,44 @@ public class RoundManager : MonoBehaviour
     {
         if(roundStarted == false)
         {
+            
             if (currentRound != 0)
             {
                 updateGoldAmount(100+currentRound);
             }
 
-            if (currentRound <= weakRounds)
+            if (currentRound < weakRounds)
             {
-                RoundStartHelper();
                 StartCoroutine(zombieRounds(enemiesToSpawn));
             }
 
-            else if (currentRound <= moderateRounds)
+            else if (currentRound < moderateRounds)
             {
-                RoundStartHelper();
                 StartCoroutine(strongerZombieRounds(enemiesToSpawn));
             }
 
-            else if (currentRound <= harderRounds)
+            else if (currentRound < harderRounds)
             {
-                RoundStartHelper();
                 StartCoroutine(vampireRounds(enemiesToSpawn));
             }
 
-            else if (currentRound > harderRounds)
+            else if (currentRound < harderRounds + 2)
             {
-                RoundStartHelper();
+                StartCoroutine(BatRounds(enemiesToSpawn));
+            }
+
+            else if (currentRound > harderRounds+4)
+            {
                 StartCoroutine(werewolfRounds(enemiesToSpawn));
             }
 
             else if(currentRound%30 != 0)
             {
-                RoundStartHelper();
                 StartCoroutine(bossRounds());
             }
+
+            RoundStartHelper();
         }
-        
     }
 
     private void RoundStartHelper()

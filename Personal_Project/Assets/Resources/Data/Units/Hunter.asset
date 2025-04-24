@@ -18,6 +18,7 @@ MonoBehaviour:
   attackSpeed: 45
   targets:
   - {fileID: 5395728486566546752, guid: f343cfe096f021e4f95e38d44d2e9fc1, type: 3}
+  - {fileID: 5395728486566546752, guid: 6cf5445adae0e1a4b8923bbd115a8c7d, type: 3}
   targetLayer:
     serializedVersion: 2
     m_Bits: 128

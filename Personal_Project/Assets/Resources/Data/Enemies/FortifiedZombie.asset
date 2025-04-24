@@ -15,7 +15,7 @@ MonoBehaviour:
   health: 2
   speed: 6
   damageStrength: 1
-  goldAmount: 5
+  goldAmount: 7
   roundSpeedLimit: 0
   vampire: 0
   zombie: 1
