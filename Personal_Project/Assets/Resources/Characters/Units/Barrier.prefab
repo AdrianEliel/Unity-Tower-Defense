@@ -22,11 +22,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7881466077556996133, guid: 0bb6d1104bd86a84bb34d442857e5e98, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.55
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7881466077556996133, guid: 0bb6d1104bd86a84bb34d442857e5e98, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.71584
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7881466077556996133, guid: 0bb6d1104bd86a84bb34d442857e5e98, type: 3}
       propertyPath: m_LocalPosition.z
@@ -88,4 +88,3 @@ MonoBehaviour:
   data: {fileID: 11400000, guid: 55eeaf3c60e0c0e448433e667667588b, type: 2}
   roundManager: {fileID: 0}
   rb: {fileID: 0}
-  health: 0
