@@ -138,10 +138,6 @@ public class RoundManager : MonoBehaviour
             yield return new WaitForSeconds(.3f);
         }
     }
-    IEnumerator bossRounds()
-    {
-        yield return new WaitForSeconds(.3f);
-    }
 
     public void startRound()
     {
@@ -153,34 +149,24 @@ public class RoundManager : MonoBehaviour
                 updateGoldAmount(100+currentRound);
             }
 
-            if (currentRound < weakRounds)
+            if (currentRound == 1)
             {
                 StartCoroutine(zombieRounds(enemiesToSpawn));
             }
 
-            else if (currentRound < moderateRounds)
+            else if(currentRound == 2)
             {
-                StartCoroutine(strongerZombieRounds(enemiesToSpawn));
-            }
-
-            else if (currentRound < harderRounds)
-            {
-                StartCoroutine(vampireRounds(enemiesToSpawn));
-            }
-
-            else if (currentRound < harderRounds + 2)
-            {
-                StartCoroutine(BatRounds(enemiesToSpawn));
-            }
-
-            else if (currentRound > harderRounds+4)
-            {
-                StartCoroutine(werewolfRounds(enemiesToSpawn));
-            }
-
-            else if(currentRound%30 != 0)
-            {
-                StartCoroutine(bossRounds());
+                for(int i = 0; i < enemiesToSpawn; i++)
+                {
+                    if (i < 20)
+                    {
+                        SpawnEnemy(enemies[0]);
+                    }
+                    else
+                    {
+                        SpawnEnemy(enemies[1]);
+                    }
+                }
             }
 
             RoundStartHelper();
