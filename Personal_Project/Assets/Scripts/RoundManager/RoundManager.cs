@@ -58,6 +58,9 @@ public class RoundManager : MonoBehaviour
         Vector3 spawnPos = Spawners[Random.Range(0,Spawners.Length)].transform.position;
         Instantiate(enemy, spawnPos, transform.rotation);
     }
+
+    //The Method to Spawn enemies. Takes in the number of each type of enemy that will spawn, the does a reverse forloop that subtratcs its index for every enemy that spawns
+    //Based on however that can spawn, the program will spawn the enemies in the order you give it.
     IEnumerator SpawnEnemies(int numZombies, int numArmoredZombies, int numWerewolves, int numBats, int numVampires)
     {
         for(int i=enemiesToSpawn; i > 0; i--)
@@ -85,12 +88,6 @@ public class RoundManager : MonoBehaviour
             yield return new WaitForSeconds(.3f);
         }
     }
-
-    void RoundStartHelper2()
-    {
-
-    }
-        
 
     public void startRound()
     {
