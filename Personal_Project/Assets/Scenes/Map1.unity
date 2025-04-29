@@ -5394,11 +5394,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
-  gold: 5000
+  gold: 50000
   Spawners:
   - {fileID: 931755536}
   enemiesToSpawn: 20
-  currentRound: 9
+  currentRound: 0
   weakRounds: 1
   moderateRounds: 4
   harderRounds: 8

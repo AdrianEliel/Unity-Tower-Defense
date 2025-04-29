@@ -58,121 +58,64 @@ public class RoundManager : MonoBehaviour
         Vector3 spawnPos = Spawners[Random.Range(0,Spawners.Length)].transform.position;
         Instantiate(enemy, spawnPos, transform.rotation);
     }
-    IEnumerator zombieRounds(int numRedEnemies)
+    IEnumerator SpawnEnemies(int numZombies, int numArmoredZombies, int numWerewolves, int numBats, int numVampires)
     {
-        for(int i =0; i < numRedEnemies; i++)
+        for(int i=enemiesToSpawn; i > 0; i--)
         {
-            SpawnEnemy(enemies[0]);
-            yield return new WaitForSeconds(.3f);
-        }
-    }
-
-    IEnumerator strongerZombieRounds(int numEnemies)
-    {
-        for (int i = 0; i < numEnemies; i++)
-        {
-            if (i % 2 == 0)
+            if (i > (Mathf.Abs(enemiesToSpawn - numZombies)))
             {
                 SpawnEnemy(enemies[0]);
             }
-            else
+            else if(i> (Mathf.Abs(enemiesToSpawn-numZombies-numArmoredZombies)))
             {
                 SpawnEnemy(enemies[3]);
             }
-            yield return new WaitForSeconds(.3f);
-        }
-    }
-
-
-    IEnumerator vampireRounds(int numEnemies)
-    {
-        for (int i = 0; i < numEnemies; i++)
-        {
-            if(i%3 == 0)
+            else if(i> (Mathf.Abs(enemiesToSpawn - numZombies - numArmoredZombies - numVampires)))
             {
                 SpawnEnemy(enemies[1]);
             }
-            else
-            {
-                SpawnEnemy(enemies[3]);
-            }
-            yield return new WaitForSeconds(.3f);
-        }
-    }
-
-    IEnumerator BatRounds(int numEnemies)
-    {
-        for (int i = 0; i < numEnemies; i++)
-        {
-            if (i % 3 == 0)
-            {
-                SpawnEnemy(enemies[1]);
-            }
-            else if (i % 4==0)
-            {
-                SpawnEnemy(enemies[4]);
-            }
-            else
-            {
-                SpawnEnemy(enemies[3]);
-            }
-            yield return new WaitForSeconds(.3f);
-        }
-    }
-    IEnumerator werewolfRounds(int numEnemies)
-    {
-        for (int i = 0; i < numEnemies; i++)
-        {
-            if (i % 4 == 0)
+            else if(i> (Mathf.Abs(enemiesToSpawn - numZombies - numArmoredZombies - numVampires - numWerewolves)))
             {
                 SpawnEnemy(enemies[2]);
             }
-            else if (i % 3 == 0)
+            else if(i> (Mathf.Abs(enemiesToSpawn - numZombies - numArmoredZombies - numVampires - numWerewolves - numBats)))
             {
-                SpawnEnemy(enemies[1]);
-            }
-            else
-            {
-                SpawnEnemy(enemies[3]);
+                SpawnEnemy(enemies[4]);
             }
             yield return new WaitForSeconds(.3f);
         }
     }
+
+    void RoundStartHelper2()
+    {
+
+    }
+        
 
     public void startRound()
     {
         if(roundStarted == false)
         {
-            
             if (currentRound != 0)
             {
                 updateGoldAmount(100+currentRound);
             }
-
-            if (currentRound == 1)
+            if (currentRound == 0)
             {
-                StartCoroutine(zombieRounds(enemiesToSpawn));
+                StartCoroutine(SpawnEnemies(20,0,0,0,0));
             }
-
-            else if(currentRound == 2)
+            if(currentRound == 1)
             {
-                for(int i = 0; i < enemiesToSpawn; i++)
-                {
-                    if (i < 20)
-                    {
-                        SpawnEnemy(enemies[0]);
-                    }
-                    else
-                    {
-                        SpawnEnemy(enemies[1]);
-                    }
-                }
+                StartCoroutine(SpawnEnemies(15, 5, 0, 0, 0));
+            }
+            if(currentRound == 2)
+            {
+                StartCoroutine(SpawnEnemies(20,5,0, 0, 0));
             }
 
             RoundStartHelper();
         }
     }
-
     private void RoundStartHelper()
     {
         currentRound++;
@@ -181,7 +124,10 @@ public class RoundManager : MonoBehaviour
     }
     public void updateEnemiesToSpawn()
     {
-        enemiesToSpawn += currentRound;
+        if (currentRound % 2 == 0)
+        {
+            enemiesToSpawn += 5;
+        }
     }
 
     public void loseHealth(int num)
