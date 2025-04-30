@@ -93,52 +93,53 @@ public class RoundManager : MonoBehaviour
     {
         if(roundStarted == false)
         {
-            if (currentRound != 0)
-            {
-                updateGoldAmount(100+currentRound);
-            }
-            if (currentRound == 0)
+            RoundStartHelper();
+            
+            if (currentRound == 1)
             {
                 StartCoroutine(SpawnEnemies(20,0,0,0,0));
             }
-            else if(currentRound == 1)
+            else if(currentRound == 2)
             {
                 StartCoroutine(SpawnEnemies(15, 5, 0, 0, 0));
             }
-            else if(currentRound == 2)
+            else if(currentRound == 3)
             {
                 StartCoroutine(SpawnEnemies(20, 5,0, 0, 0));
             }
-            else if (currentRound == 3)
+            else if (currentRound == 4)
             {
                 StartCoroutine(SpawnEnemies(15, 10, 0, 0, 0));
             }
-            else if (currentRound == 4)
+            else if (currentRound == 5)
             {
                 StartCoroutine(SpawnEnemies(20, 10, 0, 0, 0));
             }
-            else if (currentRound == 5)
+            else if (currentRound == 6)
             {
                 StartCoroutine(SpawnEnemies(10, 15, 5, 0, 0));
             }
-            else if (currentRound == 6)
+            else if (currentRound == 7)
             {
                 StartCoroutine(SpawnEnemies(20, 5, 0, 0, 0));
             }
-            else if (currentRound == 7)
+            else if (currentRound == 8)
             {
                 StartCoroutine(SpawnEnemies(10, 20, 5, 0, 0));
             }
-            else if (currentRound == 8)
+            else if (currentRound == 9)
             {
                 StartCoroutine(SpawnEnemies(15, 15, 10, 0, 0));
             }
 
-            RoundStartHelper();
         }
     }
     private void RoundStartHelper()
     {
+        if (currentRound > 0)
+            {
+                updateGoldAmount(100+currentRound);
+            }
         currentRound++;
         roundUI.updateRoundCounter(currentRound);
         roundStarted = true;
