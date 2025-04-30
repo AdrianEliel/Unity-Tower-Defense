@@ -61,7 +61,7 @@ public class RoundManager : MonoBehaviour
 
     //The Method to Spawn enemies. Takes in the number of each type of enemy that will spawn, the does a reverse forloop that subtratcs its index for every enemy that spawns
     //Based on however that can spawn, the program will spawn the enemies in the order you give it.
-    IEnumerator SpawnEnemies(int numZombies, int numArmoredZombies, int numWerewolves, int numBats, int numVampires)
+    IEnumerator SpawnEnemies(int numZombies, int numArmoredZombies, int numVampires, int numWerewolves, int numBats)
     {
         for(int i=enemiesToSpawn; i > 0; i--)
         {
@@ -101,13 +101,37 @@ public class RoundManager : MonoBehaviour
             {
                 StartCoroutine(SpawnEnemies(20,0,0,0,0));
             }
-            if(currentRound == 1)
+            else if(currentRound == 1)
             {
                 StartCoroutine(SpawnEnemies(15, 5, 0, 0, 0));
             }
-            if(currentRound == 2)
+            else if(currentRound == 2)
             {
-                StartCoroutine(SpawnEnemies(20,5,0, 0, 0));
+                StartCoroutine(SpawnEnemies(20, 5,0, 0, 0));
+            }
+            else if (currentRound == 3)
+            {
+                StartCoroutine(SpawnEnemies(15, 10, 0, 0, 0));
+            }
+            else if (currentRound == 4)
+            {
+                StartCoroutine(SpawnEnemies(20, 10, 0, 0, 0));
+            }
+            else if (currentRound == 5)
+            {
+                StartCoroutine(SpawnEnemies(10, 15, 5, 0, 0));
+            }
+            else if (currentRound == 6)
+            {
+                StartCoroutine(SpawnEnemies(20, 5, 0, 0, 0));
+            }
+            else if (currentRound == 7)
+            {
+                StartCoroutine(SpawnEnemies(10, 20, 5, 0, 0));
+            }
+            else if (currentRound == 8)
+            {
+                StartCoroutine(SpawnEnemies(15, 15, 10, 0, 0));
             }
 
             RoundStartHelper();
