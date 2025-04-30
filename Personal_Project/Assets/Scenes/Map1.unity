@@ -5398,7 +5398,7 @@ MonoBehaviour:
   Spawners:
   - {fileID: 931755536}
   enemiesToSpawn: 20
-  currentRound: 1
+  currentRound: 0
   weakRounds: 1
   moderateRounds: 4
   harderRounds: 8
