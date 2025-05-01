@@ -39,6 +39,7 @@ public class RoundManager : MonoBehaviour
     public bool isUnitBeingPlaced;
     public GameObject UnitBeingPlaced;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // sets up the variables and ui for the scene
     void Start()
     { 
         healthLoss = GameObject.Find("Enemy Destination").GetComponent<HealthLoss>();
@@ -53,6 +54,7 @@ public class RoundManager : MonoBehaviour
     {
          RoundEndHelper();
     }
+    //takes in the enemy gameobject and instantiates it at a specific location - enemy is brought from the list
     public void SpawnEnemy(GameObject enemy)
     {
         Vector3 spawnPos = Spawners[Random.Range(0,Spawners.Length)].transform.position;
@@ -88,7 +90,8 @@ public class RoundManager : MonoBehaviour
             yield return new WaitForSeconds(.3f);
         }
     }
-
+    //Start button calls this method. Starts the round with the start helper method and depending on what round its on, will use the spawn enemies
+    //method differently
     public void startRound()
     {
         if(roundStarted == false)
@@ -134,6 +137,7 @@ public class RoundManager : MonoBehaviour
 
         }
     }
+    //The method that updates the variables needed for a round to begin
     private void RoundStartHelper()
     {
         if (currentRound > 0)
@@ -144,7 +148,7 @@ public class RoundManager : MonoBehaviour
         roundUI.updateRoundCounter(currentRound);
         roundStarted = true;
     }
-
+    //method that updates the variables needed to end the round - all enemies have to be killed for this to work
     private void RoundEndHelper()
     {
         if (healthLoss.enemiesDestroyed + enemiesKilled == enemiesToSpawn)
@@ -155,6 +159,7 @@ public class RoundManager : MonoBehaviour
             roundStarted = false;
         }
     }
+    //every 2 rounds the amount of enemies that will spawn increased by 5
     public void updateEnemiesToSpawn()
     {
         if (currentRound % 2 == 0)
@@ -162,13 +167,13 @@ public class RoundManager : MonoBehaviour
             enemiesToSpawn += 5;
         }
     }
-
+    //enemies call this helper method when they reach their final destination
     public void loseHealth(int num)
     {
         health -= num;
         roundUI.updateHealthCounter(health);
     }
-
+    //an enemy calls this method when it is killed and it is also called when the round ends
     public void updateGoldAmount(int goldAddSub)
     {
         gold += goldAddSub;
