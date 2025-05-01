@@ -51,7 +51,7 @@ public class RoundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+         RoundEndHelper();
     }
     public void SpawnEnemy(GameObject enemy)
     {
@@ -121,7 +121,7 @@ public class RoundManager : MonoBehaviour
             }
             else if (currentRound == 7)
             {
-                StartCoroutine(SpawnEnemies(20, 5, 0, 0, 0));
+                StartCoroutine(SpawnEnemies(20, 15, 0, 0, 0));
             }
             else if (currentRound == 8)
             {
@@ -137,12 +137,23 @@ public class RoundManager : MonoBehaviour
     private void RoundStartHelper()
     {
         if (currentRound > 0)
-            {
-                updateGoldAmount(100+currentRound);
-            }
+        {
+            updateGoldAmount(100+currentRound);
+        }
         currentRound++;
         roundUI.updateRoundCounter(currentRound);
         roundStarted = true;
+    }
+
+    private void RoundEndHelper()
+    {
+        if (healthLoss.enemiesDestroyed + enemiesKilled == enemiesToSpawn)
+        {
+            enemiesKilled = 0;
+            healthLoss.enemiesDestroyed = 0;
+            updateEnemiesToSpawn();
+            roundStarted = false;
+        }
     }
     public void updateEnemiesToSpawn()
     {

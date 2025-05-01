@@ -71,13 +71,6 @@ public class Enemy : MonoBehaviour
         {
             roundManager.enemiesKilled++;
             roundManager.updateGoldAmount(goldAmount);
-            if (healthLoss.enemiesDestroyed + roundManager.enemiesKilled == roundManager.enemiesToSpawn)
-            {
-                roundManager.updateEnemiesToSpawn();
-                roundManager.enemiesKilled = 0;
-                healthLoss.enemiesDestroyed = 0;
-                roundManager.roundStarted = false;
-            }
             Destroy(gameObject);
         }
     }
