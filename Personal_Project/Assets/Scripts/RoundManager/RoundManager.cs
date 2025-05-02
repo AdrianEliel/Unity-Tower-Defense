@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Transactions;
 using Unity.VisualScripting;
@@ -16,6 +17,7 @@ public class RoundManager : MonoBehaviour
 
     [Header("Round stats")]
     public int enemiesToSpawn;
+    public int bossesToSpawn;
     public int currentRound;
     public int weakRounds;
     public int moderateRounds;
@@ -23,6 +25,7 @@ public class RoundManager : MonoBehaviour
     public bool roundStarted;
 
     [Header("Enemies")]
+    public GameObject[] bosses;
     public GameObject[] enemies;
     public int enemiesKilled;
 
@@ -57,7 +60,7 @@ public class RoundManager : MonoBehaviour
     //takes in the enemy gameobject and instantiates it at a specific location - enemy is brought from the list
     public void SpawnEnemy(GameObject enemy)
     {
-        Vector3 spawnPos = Spawners[Random.Range(0,Spawners.Length)].transform.position;
+        Vector3 spawnPos = Spawners[UnityEngine.Random.Range(0,Spawners.Length)].transform.position;
         Instantiate(enemy, spawnPos, transform.rotation);
     }
 
@@ -86,6 +89,16 @@ public class RoundManager : MonoBehaviour
             else if(i> (Mathf.Abs(enemiesToSpawn - numZombies - numArmoredZombies - numVampires - numWerewolves - numBats)))
             {
                 SpawnEnemy(enemies[4]);
+            }
+            yield return new WaitForSeconds(.3f);
+        }
+    }
+    IEnumerator SpawnBossRound(int numCoffins){
+        for(int i=bossesToSpawn; i>0;i--)
+        {
+            if(i>(Math.Abs(bossesToSpawn-numCoffins)))
+            {
+                SpawnEnemy(bosses[0]);
             }
             yield return new WaitForSeconds(.3f);
         }
@@ -134,6 +147,31 @@ public class RoundManager : MonoBehaviour
             {
                 StartCoroutine(SpawnEnemies(15, 15, 10, 0, 0));
             }
+            else if(currentRound == 10)
+            {
+                StartCoroutine(SpawnEnemies(5, 15, 15, 5, 0));
+            }
+            else if(currentRound == 11)
+            {
+                StartCoroutine(SpawnEnemies(5, 15,15, 10, 0));
+            }
+            else if (currentRound == 12)
+            {
+                StartCoroutine(SpawnEnemies(0, 20, 15, 10, 0));
+            }
+            else if (currentRound == 13)
+            {
+                StartCoroutine(SpawnEnemies(0, 20, 20, 10, 0));
+            }
+            else if (currentRound == 14)
+            {
+                StartCoroutine(SpawnEnemies(0, 20, 15, 15, 5));
+            }
+            else if (currentRound == 15)
+            {
+                StartCoroutine(SpawnEnemies(0, 15, 15, 15, 10));
+                StartCoroutine(SpawnBossRound(1));
+            }
 
         }
     }
@@ -165,6 +203,9 @@ public class RoundManager : MonoBehaviour
         if (currentRound % 2 == 0)
         {
             enemiesToSpawn += 5;
+        }
+        if (currentRound%15==0){
+            bossesToSpawn++;
         }
     }
     //enemies call this helper method when they reach their final destination

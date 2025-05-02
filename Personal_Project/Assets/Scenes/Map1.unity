@@ -5398,11 +5398,14 @@ MonoBehaviour:
   Spawners:
   - {fileID: 931755536}
   enemiesToSpawn: 20
+  bossesToSpawn: 0
   currentRound: 0
   weakRounds: 1
   moderateRounds: 4
   harderRounds: 8
   roundStarted: 0
+  bosses:
+  - {fileID: 5395728486566546752, guid: 1e9f4cdbcfb31fa428f5fcbfaa916c4f, type: 3}
   enemies:
   - {fileID: 5395728486566546752, guid: 0e7aecdfddc20f14fb67aa2c1f7c02bb, type: 3}
   - {fileID: 5395728486566546752, guid: f343cfe096f021e4f95e38d44d2e9fc1, type: 3}
