@@ -18,9 +18,11 @@ MonoBehaviour:
   attackSpeed: 45
   targets:
   - {fileID: 5395728486566546752, guid: 4a359ac26cc407048a126ca2b31acc0e, type: 3}
+  - {fileID: 5395728486566546752, guid: 1e9f4cdbcfb31fa428f5fcbfaa916c4f, type: 3}
   targetLayer:
     serializedVersion: 2
     m_Bits: 128
+  health: 0
   price: 400
   enemiesEliminated: 0
   placeLayer:

@@ -19,9 +19,11 @@ MonoBehaviour:
   targets:
   - {fileID: 5395728486566546752, guid: 0e7aecdfddc20f14fb67aa2c1f7c02bb, type: 3}
   - {fileID: 5395728486566546752, guid: 7be4bb5064c72304aa878e81eda79886, type: 3}
+  - {fileID: 5395728486566546752, guid: 1e9f4cdbcfb31fa428f5fcbfaa916c4f, type: 3}
   targetLayer:
     serializedVersion: 2
     m_Bits: 128
+  health: 0
   price: 150
   enemiesEliminated: 0
   placeLayer:
