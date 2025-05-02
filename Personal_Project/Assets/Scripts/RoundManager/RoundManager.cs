@@ -172,6 +172,10 @@ public class RoundManager : MonoBehaviour
                 StartCoroutine(SpawnEnemies(0, 15, 15, 15, 10));
                 StartCoroutine(SpawnBossRound(1));
             }
+            else if (currentRound == 16)
+            {
+
+            }
 
         }
     }
@@ -204,7 +208,7 @@ public class RoundManager : MonoBehaviour
         {
             enemiesToSpawn += 5;
         }
-        if (currentRound%15==0){
+        if (currentRound%14==0){
             bossesToSpawn++;
         }
     }
