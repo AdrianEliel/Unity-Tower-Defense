@@ -70,23 +70,23 @@ public class RoundManager : MonoBehaviour
     {
         for(int i=enemiesToSpawn; i > 0; i--)
         {
-            if (i > (Mathf.Abs(enemiesToSpawn - numZombies)))
+            if (i > ((enemiesToSpawn - numZombies)))
             {
                 SpawnEnemy(enemies[0]);
             }
-            else if(i> (Mathf.Abs(enemiesToSpawn-numZombies-numArmoredZombies)))
+            else if(i> ((enemiesToSpawn-numZombies-numArmoredZombies)))
             {
                 SpawnEnemy(enemies[3]);
             }
-            else if(i> (Mathf.Abs(enemiesToSpawn - numZombies - numArmoredZombies - numVampires)))
+            else if(i> ((enemiesToSpawn - numZombies - numArmoredZombies - numVampires)))
             {
                 SpawnEnemy(enemies[1]);
             }
-            else if(i> (Mathf.Abs(enemiesToSpawn - numZombies - numArmoredZombies - numVampires - numWerewolves)))
+            else if(i> ((enemiesToSpawn - numZombies - numArmoredZombies - numVampires - numWerewolves)))
             {
                 SpawnEnemy(enemies[2]);
             }
-            else if(i> (Mathf.Abs(enemiesToSpawn - numZombies - numArmoredZombies - numVampires - numWerewolves - numBats)))
+            else if(i> ((enemiesToSpawn - numZombies - numArmoredZombies - numVampires - numWerewolves - numBats)))
             {
                 SpawnEnemy(enemies[4]);
             }
