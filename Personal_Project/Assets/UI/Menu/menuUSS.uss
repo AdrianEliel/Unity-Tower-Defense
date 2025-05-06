@@ -1,0 +1,16 @@
+.menu-button {
+    flex-grow: 0;
+    flex-direction: column;
+    flex-shrink: 1;
+    align-items: stretch;
+    align-self: center;
+    width: 50%;
+    font-size: 25px;
+    -unity-font-style: bold;
+    -unity-text-align: upper-center;
+    background-color: rgba(0, 0, 0, 0);
+    border-left-color: rgba(0, 0, 0, 0);
+    border-right-color: rgba(0, 0, 0, 0);
+    border-top-color: rgba(0, 0, 0, 0);
+    border-bottom-color: rgba(0, 0, 0, 0);
+}
