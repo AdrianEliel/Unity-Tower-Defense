@@ -2,26 +2,41 @@
     flex-grow: 0;
     flex-direction: column;
     flex-shrink: 1;
-    align-items: stretch;
-    align-self: center;
     font-size: 0;
     -unity-font-style: bold;
-    -unity-text-align: middle-center;
     background-color: rgba(0, 0, 0, 0);
     border-left-color: rgba(0, 0, 0, 0);
     border-right-color: rgba(0, 0, 0, 0);
     border-top-color: rgba(0, 0, 0, 0);
     border-bottom-color: rgba(0, 0, 0, 0);
-    background-image: none;
-    background-size: 100% 100%;
     -unity-background-scale-mode: scale-and-crop;
     background-position-x: center 0;
-    background-position-y: center 0;
-    height: 25%;
-    margin-top: 0;
-    margin-right: 0;
-    margin-bottom: 0;
-    margin-left: 0;
+    height: 20%;
     opacity: 1;
-    width: 100%;
+    flex-basis: auto;
+    width: 65%;
+    background-size: 150% 300%;
+    background-position-y: center 0;
+    border-top-width: 1px;
+    border-right-width: 1px;
+    border-bottom-width: 1px;
+    border-left-width: 1px;
+    align-items: stretch;
+    align-self: center;
+    margin-top: 5px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    margin-left: 5px;
+    padding-top: 0;
+    padding-right: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    background-image: none;
+    -unity-text-align: middle-center;
+    top: 10%;
+}
+
+.menu-button:hover {
+    scale: 1.2 1.2;
+    transition-duration: 0.3s;
 }
