@@ -10,6 +10,8 @@ public class MenuController : MonoBehaviour
     private SceneManager sceneManager;
     private UIDocument mainMenu;
     private VisualElement root;
+    private VisualElement mainButtons;
+    private VisualElement mapSelection;
     private Button playButton;
     private Button exitButton;
     void Awake()
@@ -17,6 +19,8 @@ public class MenuController : MonoBehaviour
         
         mainMenu = GetComponentInParent<UIDocument>();
         root= mainMenu.rootVisualElement;
+
+        mainButtons = root.Q<VisualElement>("Buttons");
 
         playButton = root.Q<Button>("PlayButton");
         playButton.clicked += playButtonClicked;
@@ -46,7 +50,7 @@ public class MenuController : MonoBehaviour
 
     void playButtonClicked()
     {
-
+        mainButtons.style.display = DisplayStyle.None;
     }
 
 }
