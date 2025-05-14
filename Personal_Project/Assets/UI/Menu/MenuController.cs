@@ -14,6 +14,7 @@ public class MenuController : MonoBehaviour
     private VisualElement mapSelection;
     private Button playButton;
     private Button exitButton;
+    private Button map1Button;
     void Awake()
     {
         
@@ -30,6 +31,9 @@ public class MenuController : MonoBehaviour
 
         exitButton = root.Q<Button>("ExitButton");
         exitButton.clicked += exitButtonClicked;
+
+        map1Button = root.Q<Button>("Map1");
+        map1Button.clicked += map1ButtonClicked;
     }
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -56,6 +60,11 @@ public class MenuController : MonoBehaviour
         mainButtons.style.display = DisplayStyle.None;
         mapSelection.style.display = DisplayStyle.Flex;
 
+    }
+
+    void map1ButtonClicked()
+    {
+        SceneManager.LoadScene("Map1");
     }
 
 }
