@@ -21,6 +21,9 @@ public class MenuController : MonoBehaviour
         root= mainMenu.rootVisualElement;
 
         mainButtons = root.Q<VisualElement>("Buttons");
+        mapSelection = root.Q<VisualElement>("Maps");
+
+        mapSelection.style.display = DisplayStyle.None;
 
         playButton = root.Q<Button>("PlayButton");
         playButton.clicked += playButtonClicked;
@@ -51,6 +54,8 @@ public class MenuController : MonoBehaviour
     void playButtonClicked()
     {
         mainButtons.style.display = DisplayStyle.None;
+        mapSelection.style.display = DisplayStyle.Flex;
+
     }
 
 }

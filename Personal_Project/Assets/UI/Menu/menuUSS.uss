@@ -11,7 +11,7 @@
     border-bottom-color: rgba(0, 0, 0, 0);
     -unity-background-scale-mode: scale-and-crop;
     background-position-x: center 0;
-    height: 20%;
+    height: 25%;
     opacity: 1;
     flex-basis: auto;
     width: 65%;
@@ -33,7 +33,7 @@
     padding-left: 0;
     background-image: none;
     -unity-text-align: middle-center;
-    top: 10%;
+    top: auto;
 }
 
 .menu-button:hover {
