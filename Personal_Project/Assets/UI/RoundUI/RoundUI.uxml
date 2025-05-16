@@ -1,0 +1,10 @@
+<engine:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:engine="UnityEngine.UIElements" xmlns:editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <engine:VisualElement name="Screen" style="flex-grow: 1; width: auto;">
+        <engine:VisualElement name="RoundStats" style="flex-grow: 1; width: 25%; height: 100%; flex-shrink: 0;">
+            <engine:Label text="Label" />
+        </engine:VisualElement>
+        <engine:VisualElement name="CharacterButtons" style="flex-grow: 1; align-self: flex-end; right: auto; position: absolute; height: 100%; width: 25%; opacity: 1; visibility: visible; background-image: none; flex-shrink: 0; align-items: stretch; left: auto; top: auto;">
+            <engine:Button text="Button" name="Unit1" class="character-button" />
+        </engine:VisualElement>
+    </engine:VisualElement>
+</engine:UXML>
