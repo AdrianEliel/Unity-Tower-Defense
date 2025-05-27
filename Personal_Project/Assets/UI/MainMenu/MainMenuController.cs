@@ -13,6 +13,7 @@ public class MainMenuController : MonoBehaviour
     public Button returnButton;
     public GameObject mapSelection;
     public Button map1;
+    public Button map2;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -22,7 +23,8 @@ public class MainMenuController : MonoBehaviour
         playButton.onClick.AddListener(PlayButtonClicked);
         exitButton.onClick.AddListener(ExitButtonClicked);
         returnButton.onClick.AddListener(returnButtonClicked);
-        map1.onClick.AddListener(Map1Clicked);
+        map1.onClick.AddListener(delegate { MapClicked(map1); });
+        map2.onClick.AddListener(delegate { MapClicked(map2); });
     }
 
     // Update is called once per frame
@@ -45,9 +47,9 @@ public class MainMenuController : MonoBehaviour
 #endif
     }
 
-    public void Map1Clicked()
+    public void MapClicked(Button map)
     {
-        SceneManager.LoadScene("Map1");
+        SceneManager.LoadScene(map.name);
     }
 
     public void returnButtonClicked()
