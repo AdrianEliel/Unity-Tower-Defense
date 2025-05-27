@@ -43,7 +43,7 @@ public class RoundManager : MonoBehaviour
     void Start()
     { 
         healthLoss = GameObject.Find("Enemy Destination").GetComponent<HealthLoss>();
-        roundUI = GetComponentInParent<RoundUI>();
+        roundUI = GameObject.Find("GameUIManager").GetComponent<RoundUI>();
         roundUI.updateHealthCounter(health);
         roundUI.updateRoundCounter(currentRound);
         roundUI.updateMoneyCounter(gold);
