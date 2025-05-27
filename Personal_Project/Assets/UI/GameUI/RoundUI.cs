@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 
 public class RoundUI : MonoBehaviour
 {
@@ -7,6 +8,9 @@ public class RoundUI : MonoBehaviour
     public TextMeshProUGUI roundCounter;
     public TextMeshProUGUI healthCounter;
     public TextMeshProUGUI moneyCounter;
+    [Header("Buttons")]
+    public Canvas pauseMenu;
+    public Button pauseButton;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
