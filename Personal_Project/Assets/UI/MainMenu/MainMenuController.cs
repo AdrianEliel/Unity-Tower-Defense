@@ -10,6 +10,7 @@ public class MainMenuController : MonoBehaviour
     public GameObject mainMenu;
     public Button playButton;
     public Button exitButton;
+    public Button returnButton;
     public GameObject mapSelection;
     public Button map1;
 
@@ -20,13 +21,14 @@ public class MainMenuController : MonoBehaviour
         mapSelection.SetActive(false);
         playButton.onClick.AddListener(PlayButtonClicked);
         exitButton.onClick.AddListener(ExitButtonClicked);
+        returnButton.onClick.AddListener(returnButtonClicked);
         map1.onClick.AddListener(Map1Clicked);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void PlayButtonClicked()
@@ -38,13 +40,19 @@ public class MainMenuController : MonoBehaviour
     public void ExitButtonClicked()
     {
         Application.Quit();
-        #if UNITY_EDITOR
+#if UNITY_EDITOR
         EditorApplication.isPlaying=false;
-        #endif
+#endif
     }
 
     public void Map1Clicked()
     {
         SceneManager.LoadScene("Map1");
+    }
+
+    public void returnButtonClicked()
+    {
+        mainMenu.SetActive(true);
+        mapSelection.SetActive(false);
     }
 }
