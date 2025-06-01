@@ -149,7 +149,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5835206122473997720, guid: 7866bb4c7a1a8294ab0d91e00834880a, type: 3}
       propertyPath: m_Name
-      value: SheriffProp
+      value: Unit3Prop
       objectReference: {fileID: 0}
     - target: {fileID: 8814929576926208547, guid: 7866bb4c7a1a8294ab0d91e00834880a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -327,7 +327,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5835206122473997720, guid: 7c8368ec3b2484e47a477c65461b9965, type: 3}
       propertyPath: m_Name
-      value: HunterProp
+      value: Unit2Prop
       objectReference: {fileID: 0}
     - target: {fileID: 8814929576926208547, guid: 7c8368ec3b2484e47a477c65461b9965, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2377,7 +2377,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5835206122473997720, guid: b5b8571267d957d46a6d2a23d17ec68d, type: 3}
       propertyPath: m_Name
-      value: Soldier Prop
+      value: Unit1Prop
       objectReference: {fileID: 0}
     - target: {fileID: 8814929576926208547, guid: b5b8571267d957d46a6d2a23d17ec68d, type: 3}
       propertyPath: m_LocalPosition.x

@@ -1675,7 +1675,7 @@ GameObject:
   - component: {fileID: 9165253680508639160}
   - component: {fileID: 8146546284935405383}
   m_Layer: 5
-  m_Name: Soldier
+  m_Name: Unit 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1823,7 +1823,7 @@ GameObject:
   - component: {fileID: 1060765632820331905}
   - component: {fileID: 6017476289331655207}
   m_Layer: 5
-  m_Name: Hunter
+  m_Name: Unit 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2022,7 +2022,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Sheriff
+  m_text: 'Unit 3
 
 '
   m_isRightToLeft: 0
@@ -2160,7 +2160,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Hunter
+  m_text: 'Unit 2
 
 '
   m_isRightToLeft: 0
@@ -2419,7 +2419,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Soldier
+  m_text: 'Unit 1
 
 '
   m_isRightToLeft: 0
@@ -2506,7 +2506,7 @@ GameObject:
   - component: {fileID: 1387647575310399462}
   - component: {fileID: 6999397438462151240}
   m_Layer: 5
-  m_Name: Sheriff
+  m_Name: Unit 3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
