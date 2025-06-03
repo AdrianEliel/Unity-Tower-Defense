@@ -8,10 +8,12 @@ using System.Xml.Serialization;
 public class MainMenuController : MonoBehaviour
 {
     public GameObject mainMenu;
+    public GameObject mapSelection;
+    public GameObject settingsMenu;
     public Button playButton;
     public Button exitButton;
     public Button returnButton;
-    public GameObject mapSelection;
+    public Button settingsButton;
     public Button map1;
     public Button map2;
 
@@ -23,6 +25,7 @@ public class MainMenuController : MonoBehaviour
         playButton.onClick.AddListener(PlayButtonClicked);
         exitButton.onClick.AddListener(ExitButtonClicked);
         returnButton.onClick.AddListener(returnButtonClicked);
+        settingsButton.onClick.AddListener(SettingsButtonClicked);
         map1.onClick.AddListener(delegate { MapClicked(map1); });
         map2.onClick.AddListener(delegate { MapClicked(map2); });
     }
@@ -31,6 +34,11 @@ public class MainMenuController : MonoBehaviour
     void Update()
     {
 
+    }
+    public void SettingsButtonClicked()
+    {
+        mainMenu.SetActive(false);
+        settingsMenu.SetActive(true);
     }
 
     public void PlayButtonClicked()
