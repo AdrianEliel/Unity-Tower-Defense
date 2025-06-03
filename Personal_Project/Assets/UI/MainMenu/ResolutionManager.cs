@@ -15,7 +15,7 @@ public class ResolutionManager : MonoBehaviour
         List<string> options = new List<string>();
         for (int i = 0; i < resolutions.Length; i++)
         {
-            string resolutionOption = resolutions[i].width + "x" + resolutions[i].height + " " + resolutions[i].refreshRateRatio.value + "Hz";
+            string resolutionOption = resolutions[i].width + "x" + resolutions[i].height + " " + (int)resolutions[i].refreshRateRatio.value + "Hz";
             options.Add(resolutionOption);
 
             if (resolutions[i].width == Screen.width && resolutions[i].height == Screen.height)
