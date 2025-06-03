@@ -13,9 +13,11 @@ public class MainMenuController : MonoBehaviour
     public Button playButton;
     public Button exitButton;
     public Button returnButton;
+    public Button returnButton2;
     public Button settingsButton;
     public Button map1;
     public Button map2;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -25,6 +27,7 @@ public class MainMenuController : MonoBehaviour
         playButton.onClick.AddListener(PlayButtonClicked);
         exitButton.onClick.AddListener(ExitButtonClicked);
         returnButton.onClick.AddListener(returnButtonClicked);
+        returnButton2.onClick.AddListener(returnButton2Clicked);
         settingsButton.onClick.AddListener(SettingsButtonClicked);
         map1.onClick.AddListener(delegate { MapClicked(map1); });
         map2.onClick.AddListener(delegate { MapClicked(map2); });
@@ -51,7 +54,7 @@ public class MainMenuController : MonoBehaviour
     {
         Application.Quit();
 #if UNITY_EDITOR
-        EditorApplication.isPlaying=false;
+        EditorApplication.isPlaying = false;
 #endif
     }
 
@@ -65,4 +68,10 @@ public class MainMenuController : MonoBehaviour
         mainMenu.SetActive(true);
         mapSelection.SetActive(false);
     }
+    public void returnButton2Clicked()
+    {
+        settingsMenu.SetActive(false);
+        mainMenu.SetActive(true);
+    }
 }
+
