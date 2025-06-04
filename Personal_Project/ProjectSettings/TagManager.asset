@@ -9,6 +9,7 @@ TagManager:
   - AttackRangeCollider
   - PlacementRangeCollider
   - Armor
+  - WaterUnitAllowed
   layers:
   - Default
   - TransparentFX

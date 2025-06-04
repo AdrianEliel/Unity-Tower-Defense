@@ -77,7 +77,7 @@ public class Enemy : MonoBehaviour
 
     private IEnumerator moveToWayPoints()
     {
-        while (atTheEnd == false)
+         while (atTheEnd == false)
         {
             yield return null;
             if (roundManager.enemyWaypoints.Length > 1 && roundManager.enemyWaypoints[currentWaypoint] != null)
