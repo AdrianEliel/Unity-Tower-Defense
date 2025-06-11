@@ -20,6 +20,7 @@ public class RoundManager : MonoBehaviour
     public int bossesToSpawn;
     public int currentRound;
     public bool roundStarted;
+    public bool gameOver;
 
     [Header("Enemies")]
     public GameObject[] bosses;
@@ -41,7 +42,8 @@ public class RoundManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     // sets up the variables and ui for the scene
     void Start()
-    { 
+    {
+        gameOver = false;
         healthLoss = GameObject.Find("Enemy Destination").GetComponent<HealthLoss>();
         roundUI = GameObject.Find("GameUIManager").GetComponent<RoundUI>();
         roundUI.updateHealthCounter(health);
@@ -104,7 +106,7 @@ public class RoundManager : MonoBehaviour
     //method differently
     public void startRound()
     {
-        if(roundStarted == false)
+        if (roundStarted == false && gameOver == false)
         {
             RoundStartHelper();
             
@@ -176,12 +178,19 @@ public class RoundManager : MonoBehaviour
 
         }
     }
+    private void GameOver()
+    {
+        if (gameOver == true)
+        {
+            roundUI.GameOverMenu.SetActive(true);
+        }
+    }
     //The method that updates the variables needed for a round to begin
     private void RoundStartHelper()
     {
         if (currentRound > 0)
         {
-            updateGoldAmount(100+currentRound);
+            updateGoldAmount(100 + currentRound);
         }
         currentRound++;
         roundUI.updateRoundCounter(currentRound);

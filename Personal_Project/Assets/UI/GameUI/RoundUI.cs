@@ -9,19 +9,27 @@ public class RoundUI : MonoBehaviour
     public TextMeshProUGUI roundCounter;
     public TextMeshProUGUI healthCounter;
     public TextMeshProUGUI moneyCounter;
+
     [Header("Buttons")]
     public GameObject pauseMenu;
+    public GameObject GameOverMenu;
+    public Button gameOverExit;
+    public Button gameOverRestart;
     public Button pauseButton;
     public Button exitButton;
     public Button returnButton;
+    public Button restart;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         pauseMenu.SetActive(false);
+        GameOverMenu.SetActive(false);
         pauseButton.onClick.AddListener(pauseButtonClicked);
         exitButton.onClick.AddListener(exitButtonClicked);
+        gameOverExit.onClick.AddListener(exitButtonClicked);
         returnButton.onClick.AddListener(returnButtonClicked);
+        gameOverRestart.onClick.AddListener(RestartButtonClicked);
     }
 
     // Update is called once per frame
@@ -55,5 +63,9 @@ public class RoundUI : MonoBehaviour
     public void returnButtonClicked()
     {
         pauseMenu.SetActive(false);
+    }
+    public void RestartButtonClicked()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

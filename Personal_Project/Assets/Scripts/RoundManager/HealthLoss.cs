@@ -29,11 +29,15 @@ public class HealthLoss : MonoBehaviour
             enemiesDestroyed++;
             roundManager.loseHealth(enemy.getStrength());
             if (enemiesDestroyed + roundManager.enemiesKilled == roundManager.enemiesToSpawn)
-            { 
+            {
                 roundManager.updateEnemiesToSpawn();
                 roundManager.enemiesKilled = 0;
                 enemiesDestroyed = 0;
                 roundManager.roundStarted = false;
+            }
+            if (roundManager.health <= 0)
+            {
+                roundManager.gameOver = true;
             }
         }
     }
