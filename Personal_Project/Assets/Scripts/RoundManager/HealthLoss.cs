@@ -37,7 +37,8 @@ public class HealthLoss : MonoBehaviour
             }
             if (roundManager.health <= 0)
             {
-                roundManager.gameOver = true;
+                roundManager.gameOver = false;
+                roundManager.GameOver();
             }
         }
     }

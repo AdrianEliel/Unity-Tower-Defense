@@ -6256,7 +6256,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba0744b8ae7090c4591c41dbe7070d3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 75
   gold: 250
   Spawners:
   - {fileID: 1642969359}

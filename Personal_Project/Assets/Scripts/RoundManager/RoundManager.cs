@@ -54,7 +54,7 @@ public class RoundManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-         RoundEndHelper();
+        RoundEndHelper();
     }
     //takes in the enemy gameobject and instantiates it at a specific location - enemy is brought from the list
     public void SpawnEnemy(GameObject enemy)
@@ -178,12 +178,9 @@ public class RoundManager : MonoBehaviour
 
         }
     }
-    private void GameOver()
+    public void GameOver()
     {
-        if (gameOver == true)
-        {
-            roundUI.GameOverMenu.SetActive(true);
-        }
+        roundUI.GameOverMenu.SetActive(true);
     }
     //The method that updates the variables needed for a round to begin
     private void RoundStartHelper()
