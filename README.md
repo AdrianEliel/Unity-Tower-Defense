@@ -1,6 +1,6 @@
 # Unity Tower Defense
 
-A tower defense game I made in Unity using C#.
+A tower defense game I made in Unity using C#!
 
 I started this project a few years ago as a way to learn more about Unity and game development. The main idea was to make a simple tower defense game where the player could place towers, defend against enemies, and progress through waves.
 
